@@ -21,5 +21,11 @@ function validasi(form){
 </script>
 <style type="text/css">
 
+p, h1, form, button{border:0; margin:0; padding:0;}
+body {
+	background-image: url(images/bg_tile_01.jpg);
+	background-repeat: repeat-x;
+	background-color: #D6E8F4;
+}
 </style>
 </html>
