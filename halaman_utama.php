@@ -87,3 +87,8 @@
                         	</ul>
 							  </li>					
 					</ul>
+					</li>				
+				<li><a href="./modul/isi_gmaps.php" target="_blank">
+					<img src="images/icons/grey/battery.png">
+					<span>View Kecamatan</span>																	
+	</li>	
