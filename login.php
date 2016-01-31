@@ -59,5 +59,13 @@ body {
 	height:23px;
 	z-index:1;
 }
+#inputpass {
+	position:absolute;
+	left:278px;
+	top:332px;
+	width:215px;
+	height:21px;
+	z-index:2;
+}
 </style>
 </html>
