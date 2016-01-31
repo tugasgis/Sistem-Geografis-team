@@ -51,5 +51,13 @@ body {
 	top: 45px;
 	bottom: 50px;
 }
+#inputnama {
+	position:absolute;
+	left:278px;
+	top:273px;
+	width:215px;
+	height:23px;
+	z-index:1;
+}
 </style>
 </html>
