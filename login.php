@@ -43,6 +43,13 @@ body {
 	height:31px;
 	z-index:1;
 	text-align: center;
+}#wrapper {
+	position: absolute;
+	height: 600px;
+	width: 800px;
+	left: 220px;
+	top: 45px;
+	bottom: 50px;
 }
 </style>
 </html>
