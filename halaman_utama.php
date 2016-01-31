@@ -134,3 +134,14 @@
                         <li><a href="./modul/editsto.php" target="_blank"><img src="images/icons/grey/sign_post.png">Manage STO</a></li>
 					</ul>
 	</li>	
+	<li><a href="#">
+					<img src="images/icons/grey/chart_6.png">
+					<span>Help</span>
+					<span class="icon">&nbsp;</span></a>
+					<ul>
+						<li><a href="./modul/GUIDE.docx" target="_blank">Penggunaan Aplikasi</li>
+						<li><a href="./modul/privacy_policy.php" target="_blank">Ketentuan dan Kebijakan</li>
+						<li><a href="./modul/fitur.php" target="_blank">Fitur-Fitur</a></li>
+                        <li><a href="./modul/about.php" target="_blank">About</a></li>
+					</ul>
+					
