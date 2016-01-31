@@ -126,3 +126,11 @@
 					<img src="images/icons/grey/price_tag.png">
 					<span>Manage Data</span>
                     <span class="icon">&nbsp;</span></a>
+					  <ul>
+						<li><a href="./modul/edituser.php" target="_blank"><img src="images/icons/grey/winner_podium.png">Manage User</a></li>
+						<li><a href="./modul/edit_dp.php" target="_blank"><img src="images/icons/grey/sign_post.png">Manage DP</a></li>
+						<li><a href="./modul/editperum.php" target="_blank"><img src="images/icons/grey/running_man.png">Manage Perum</a></li>
+                        <li><a href="./modul/editrk.php" target="_blank"><img src="images/icons/grey/battery.png">Manage RK</a></li>
+                        <li><a href="./modul/editsto.php" target="_blank"><img src="images/icons/grey/sign_post.png">Manage STO</a></li>
+					</ul>
+	</li>	
