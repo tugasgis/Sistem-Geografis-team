@@ -85,3 +85,5 @@
                         		<li><a href="./modul/report_dp.php"><img src="images/icons/grey/winner_podium.png">Report DP</a></li>
                                 <li><a href="./modul/report_sto.php"><img src="images/icons/grey/winner_podium.png">Report STO</a></li>
                         	</ul>
+							  </li>					
+					</ul>
