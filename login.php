@@ -82,4 +82,15 @@ body {
 <div id="inputpass">
 <input name="password" type="password" size="30" maxlength="25" placeholder="Password"/>
 </div>
+/div>
+<div id="aksi">
+  <table width="127" border="0">
+    <tr>
+      <td width="59"><input name="" type="submit" value="Log In" /></td>
+      <td width="58"><input name="" type="reset" value="Reset" /></td>
+    </tr>
+  </table>
+</div>
+</form>
+</body>
 </html>
