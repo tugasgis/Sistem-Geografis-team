@@ -77,4 +77,9 @@ body {
 <form name="form" action="cekdulu.php" method="POST" onSubmit="return validasi(this)">
 <div id="wrapper"><img src="images/login.png" width="800" height="600" />
 <div id="inputnama">
+<input name="username" type="text" size="30" maxlength="25" placeholder="Username"/>
+</div>
+<div id="inputpass">
+<input name="password" type="password" size="30" maxlength="25" placeholder="Password"/>
+</div>
 </html>
