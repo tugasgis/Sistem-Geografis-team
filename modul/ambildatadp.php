@@ -25,4 +25,8 @@ while($x = mysql_fetch_array($data)){
         "y":"'.$x['lng'].'"
     },';
 }
+$json = substr($json,0,strlen($json)-1);
+$json .= ']';
+
+
 ?>
