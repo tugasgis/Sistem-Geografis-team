@@ -71,4 +71,10 @@ body {
 	text-align: center;
 }
 </style>
+</head>
+
+<body OnLoad="document.login.username.focus();"> 
+<form name="form" action="cekdulu.php" method="POST" onSubmit="return validasi(this)">
+<div id="wrapper"><img src="images/login.png" width="800" height="600" />
+<div id="inputnama">
 </html>
