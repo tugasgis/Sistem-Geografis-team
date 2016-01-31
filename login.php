@@ -27,5 +27,13 @@ body {
 	background-repeat: repeat-x;
 	background-color: #D6E8F4;
 }
+#wrapper button {
+	position:absolute;
+	left:403;
+	top:388;
+	margin-left:150px;
+	width:125px;
+	height:31px;
+}
 </style>
 </html>
