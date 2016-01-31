@@ -16,7 +16,10 @@ while($x = mysql_fetch_array($data)){
 		"nama":"'.htmlspecialchars($x['kode_dp']).'",
         "alamat":"'.htmlspecialchars($x['alamat']).'",
 		"kapasitas":"'.htmlspecialchars($x['kapasitas']).'",
-
+		"isi":"'.htmlspecialchars($x['jumlah_isi']).'",
+		"rusak":"'.htmlspecialchars($x['jumlah_rusak']).'",
+		"wsucc":"'.htmlspecialchars($x['jumlah_wsucc']).'",
+		"kosong":"'.htmlspecialchars($x['jumlah_kosong']).'",
 		"idrk":"'.$x['id_rk'].'",
 		"x":"'.$x['lat'].'",
         "y":"'.$x['lng'].'"
