@@ -180,3 +180,5 @@
 					</div> -->
 				</li>				
 			</ul>
+			<a href="#" class="minimize round_bottom"><span>minimize</span></a>
+		</div>
