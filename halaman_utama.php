@@ -92,3 +92,21 @@
 					<img src="images/icons/grey/battery.png">
 					<span>View Kecamatan</span>																	
 	</li>	
+	<li><a href="./modul/view_perum.php" target="_blank">
+					<img src="images/icons/grey/running_man.png">
+					<span>View Perumahan</span>																	
+</li>	
+                <li><a class="round_left" href="#">
+					<img src="images/icons/grey/settings_2.png"><span>Pilih Kecamatan</span>
+					<span class="icon">&nbsp;</span>
+					</a>
+					<ul>
+						<li><a href="./modul/view_perum_barat.php" target="_blank"><img src="images/icons/grey/sport_shirt.png">Kec. Bogor Barat</a></li>
+						<li><a href="./modul/view_perum_selatan.php" target="_blank"><img src="images/icons/grey/trashcan_2.png">Kec. Bogor Selatan</a></li>
+                        <li><a href="./modul/view_perum_tengah.php" target="_blank"><img src="images/icons/grey/winner_podium.png">Kec. Bogor Tengah</a></li>
+                        <li><a href="./modul/view_perum_timur.php" target="_blank"><img src="images/icons/grey/sign_post.png">Kec. Bogor Timur</a></li>
+						<li><a href="./modul/view_perum_utara.php" target="_blank"><img src="images/icons/grey/strategy_2.png">Kec. Bogor Utara</a></li>
+                        <li><a href="./modul/view_perum_tanah.php" target="_blank"><img src="images/icons/grey/refresh_2.png">Kec. Tanah Sareal</a></li>
+                       
+					</ul>
+				</li>	
