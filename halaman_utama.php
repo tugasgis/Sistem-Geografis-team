@@ -79,27 +79,3 @@
                         </li>
                         <li><a href="#"><img src="images/icons/grey/refresh_2.png">Excel Report</a>
                         <span class="icon">&nbsp;</span>
-                        <ul>
-                        		<li><a href="./modul/report_perum.php"><img src="images/icons/grey/sport_shirt.png">Report Perumahan</a></li>
-								<li><a href="./modul/report_rk.php"><img src="images/icons/grey/trashcan_2.png">Report RK</a></li>
-                        		<li><a href="./modul/report_dp.php"><img src="images/icons/grey/winner_podium.png">Report DP</a></li>
-                                <li><a href="./modul/report_sto.php"><img src="images/icons/grey/winner_podium.png">Report STO</a></li>
-                        	</ul>
-                        </li>					
-					</ul>
-				</li>				
-				<li><a href="./modul/isi_gmaps.php" target="_blank">
-					<img src="images/icons/grey/battery.png">
-					<span>View Kecamatan</span>																	
-	</li>	
-                <li><a href="./modul/view_perum.php" target="_blank">
-					<img src="images/icons/grey/running_man.png">
-					<span>View Perumahan</span>																	
-</li>	
-                <li><a class="round_left" href="#">
-					<img src="images/icons/grey/settings_2.png"><span>Pilih Kecamatan</span>
-					<span class="icon">&nbsp;</span>
-					</a>
-					
- </body>
-</html>
