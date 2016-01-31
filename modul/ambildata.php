@@ -10,4 +10,16 @@ $data = mysql_query($query);
 
 $json = '{"wilayah": {';
 $json .= '"petak":[ ';
+while($x = mysql_fetch_array($data)){
+    $json .= '{';
+    $json .= '"id_sto":"'.$x['id_sto'].'",
+        "kode":"'.htmlspecialchars($x['kode_sto']).'",
+		"nama":"'.htmlspecialchars($x['nama_sto']).'",
+        "alamat":"'.htmlspecialchars($x['alamat']).'",
+		"kec":"'.$x['id'].'",
+		"daerah":"'.$x['daerah'].'",
+		"x":"'.$x['lat'].'",
+        "y":"'.$x['lng'].'"
+    },';
+}
 ?>
