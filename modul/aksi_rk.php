@@ -11,5 +11,14 @@ if ($jenis=='rk' AND $act=='hapus'){
   header('location:editrk.php');
 }
 
+// Update rk
+elseif ($jenis=='rk' AND $act=='edit_rk'){
+  mysql_query("UPDATE rk SET nama_rk 	   = '$_POST[nama_rk]',
+                                   alamat          = '$_POST[alamat]', 
+                                   id_sto  	   	   = '$_POST[id_sto]',  
+                                   lat    		   = '$_POST[lat]', 
+                                   lng   		   = '$_POST[lng]'
+								   WHERE id_rk  = '$_POST[id]'");
+	header('location:editrk.php');
 }
 ?>
