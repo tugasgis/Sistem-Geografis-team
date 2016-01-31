@@ -79,3 +79,9 @@
                         </li>
                         <li><a href="#"><img src="images/icons/grey/refresh_2.png">Excel Report</a>
                         <span class="icon">&nbsp;</span>
+						<ul>
+                        		<li><a href="./modul/report_perum.php"><img src="images/icons/grey/sport_shirt.png">Report Perumahan</a></li>
+								<li><a href="./modul/report_rk.php"><img src="images/icons/grey/trashcan_2.png">Report RK</a></li>
+                        		<li><a href="./modul/report_dp.php"><img src="images/icons/grey/winner_podium.png">Report DP</a></li>
+                                <li><a href="./modul/report_sto.php"><img src="images/icons/grey/winner_podium.png">Report STO</a></li>
+                        	</ul>
