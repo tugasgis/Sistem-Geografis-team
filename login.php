@@ -67,5 +67,8 @@ body {
 	height:21px;
 	z-index:2;
 }
+#aksi table {
+	text-align: center;
+}
 </style>
 </html>
