@@ -92,5 +92,14 @@
 					<img src="images/icons/grey/battery.png">
 					<span>View Kecamatan</span>																	
 	</li>	
-               
+                <li><a href="./modul/view_perum.php" target="_blank">
+					<img src="images/icons/grey/running_man.png">
+					<span>View Perumahan</span>																	
+</li>	
+                <li><a class="round_left" href="#">
+					<img src="images/icons/grey/settings_2.png"><span>Pilih Kecamatan</span>
+					<span class="icon">&nbsp;</span>
+					</a>
+					
+ </body>
 </html>
