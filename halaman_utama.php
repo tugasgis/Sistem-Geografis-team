@@ -144,4 +144,21 @@
 						<li><a href="./modul/fitur.php" target="_blank">Fitur-Fitur</a></li>
                         <li><a href="./modul/about.php" target="_blank">About</a></li>
 					</ul>
-					
+					</li>
+                <!--
+				<li><a href="#">
+					<img src="images/icons/grey/book.png">
+					<span>Link</span></a>
+				</li>				
+				<li><a href="#">
+					<img src="images/icons/grey/magnifying_glass.png">
+					<span>Search</span>
+					<span class="icon">&nbsp;</span></a>
+					<div class="drop_box round_all">
+						<form style="width:210px">
+							<input class="round_all" value="Search...">
+							<button class="send_right">Go</button>
+						</form>
+					</div>
+				</li>			
+                -->	
