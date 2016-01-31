@@ -182,3 +182,5 @@
 			</ul>
 			<a href="#" class="minimize round_bottom"><span>minimize</span></a>
 		</div>
+				<div id="main" class="grid_13 omega">
+		  <div class="content round_all clearfix">
