@@ -184,3 +184,11 @@
 		</div>
 				<div id="main" class="grid_13 omega">
 		  <div class="content round_all clearfix">
+		  <div id="map-canvas" style="width: auto; height: 300px"></div>
+			<!--
+            <div class=""></div>
+		    <p>hehe</p>
+			</div> -->
+		</div>
+ </body>
+</html>
