@@ -162,3 +162,21 @@
 					</div>
 				</li>			
                 -->	
+				<li><a href="logout.php">
+					<img src="images/icons/grey/key.png">
+					<span>Log Out</span>
+                    <!--
+					<span class="icon">&nbsp;</span></a>
+					<div class="drop_box round_all">
+						<form style="width:160px">
+							<fieldset class="grid_8">
+								<label>Email</label><input class="round_all" value="name@example.com">
+							</fieldset>
+							<fieldset class="grid_8">
+								<label>Password</label><input class="round_all" type="password" value="password">
+							</fieldset>
+							<button class="send_right">Login</button>
+						</form>
+					</div> -->
+				</li>				
+			</ul>
