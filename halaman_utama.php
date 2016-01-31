@@ -110,3 +110,15 @@
                        
 					</ul>
 				</li>	
+				<li><a href="#">
+					<img src="images/icons/grey/trashcan_2.png">
+					<span>Tambah Manual</span>	
+                    <span class="icon">&nbsp;</span>
+              <ul>
+                    	<li><a href="./modul/tambahperum.php" target="_blank"><img src="images/icons/grey/sport_shirt.png">Tambah Perumahan</a></li>
+						<li><a href="./modul/tambahsto.php" target="_blank"><img src="images/icons/grey/trashcan_2.png">Tambah STO</a></li>
+                        <li><a href="./modul/tambahrk.php" target="_blank"><img src="images/icons/grey/winner_podium.png">Tambah RK</a></li>
+                        <li><a href="./modul/tambahdp.php" target="_blank"><img src="images/icons/grey/sign_post.png">Tambah DP</a></li>
+                    </ul>
+			</li>	
+			</li>	
