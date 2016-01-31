@@ -35,5 +35,14 @@ body {
 	width:125px;
 	height:31px;
 }
+#aksi {
+	position:absolute;
+	left:699px;
+	top:432px;
+	width:132px;
+	height:31px;
+	z-index:1;
+	text-align: center;
+}
 </style>
 </html>
