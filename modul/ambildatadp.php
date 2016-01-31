@@ -6,4 +6,8 @@ if($akhir==1){
 }else{
     $query = "SELECT * FROM dp";
 }
+$data = mysql_query($query);
+
+$json = '{"wilayah": {';
+$json .= '"petak":[ ';
 ?>
