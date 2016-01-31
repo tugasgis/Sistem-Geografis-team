@@ -122,3 +122,7 @@
                     </ul>
 			</li>	
 			</li>	
+			 <li><a href="#">
+					<img src="images/icons/grey/price_tag.png">
+					<span>Manage Data</span>
+                    <span class="icon">&nbsp;</span></a>
