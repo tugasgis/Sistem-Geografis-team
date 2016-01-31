@@ -27,6 +27,7 @@ while($x = mysql_fetch_array($data)){
 }
 $json = substr($json,0,strlen($json)-1);
 $json .= ']';
-
+$json .= '}}';
+echo $json;
 
 ?>
