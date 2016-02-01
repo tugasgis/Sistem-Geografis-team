@@ -30,6 +30,24 @@
     });
     $("#x").val(lokasi.lat());
     $("#y").val(lokasi.lng());
+     var map = new google.maps.Map(document.getElementById("map_canvas"), options);
+      var html = "<table>" +
+                 "<tr><td>Nama Perumahan:</td> <td><input type='text' id='nama_perum'/> </td> </tr>" +
+				 "<tr><td>Alamat:</td> <td><input type='text' id='alamat'/> </td> </tr>" +
+				 "<tr><td>Kecamatan:</td> <td><select id='id'>" +
+                 "<option value='1' SELECTED>Bogor Barat</option>" +
+				 "<option value='2' SELECTED>Bogor Selatan</option>" +
+				 "<option value='3' SELECTED>Bogor Tengah</option>" +
+				 "<option value='4' SELECTED>Bogor imur</option>" +
+				 "<option value='5' SELECTED>Bogor Utara</option>" +
+				 "<option value='6' SELECTED>Tanah Sareal</option>" +
+				 "</select> </td></tr>" +
+                 "<tr><td>Jumlah Dibangun:</td> <td><input type='text' id='jumlah_dibangun'/></td> </tr>" +
+				 "<tr><td>Sudah Dibangun:</td> <td><input type='text' id='sudah_dibangun'/></td> </tr>" +
+                 "<tr><td></td><td><input type='button' value='Save & Close' onclick='saveData()'/></td></tr>";
+    infowindow = new google.maps.InfoWindow({
+     content: html
+    });
      function initialize() {
       var latlng = new google.maps.LatLng(-6.589155,106.793032);
       var options = {
