@@ -48,3 +48,17 @@ $tampil=mysql_query("SELECT * FROM sto ORDER BY id_sto DESC LIMIT $posisi,$batas
 $no = $posisi+1;
     while ($r=mysql_fetch_array($tampil)){
       echo "
+		<tr align=center>
+		<td>$no</td>
+		<td width=70>$r[kode_sto]</td>
+                <td width=70>$r[nama_sto]</td>
+                <td width=90>$r[alamat]</td>
+                <td width=40>$r[id]</td>
+		<td width=70>$r[daerah]</td>
+		<td>$r[lat]</td>
+		<td>$r[lng]</td>
+                <td><a href=?jenis=sto&act=edit_sto&id=$r[id_sto]>Edit</a> | 
+	                  <a href=$aksi?jenis=sto&act=hapus&id=$r[id_sto]>Hapus</a>
+		        </tr>";
+      $no++;
+    }
