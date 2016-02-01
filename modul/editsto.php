@@ -38,3 +38,7 @@ switch($_GET[act]){
 	<th>Longitude</th>
 	<th>Aksi</th>
 	</tr>";
+
+$p      = new Paging;
+    $batas  = 10;
+    $posisi = $p->cariPosisi($batas);
