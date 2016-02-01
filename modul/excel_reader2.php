@@ -158,4 +158,9 @@ class OLERead {
 				$index++;
 			}
 		}
+	// readSmallBlockDepot();
+		$pos = 0;
+		$index = 0;
+		$sbdBlock = $this->sbdStartBlock;
+		$this->smallBlockChain = array();
 ?>
