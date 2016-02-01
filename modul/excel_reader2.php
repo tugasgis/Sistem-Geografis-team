@@ -178,4 +178,8 @@ class OLERead {
 		$this->entry = $this->__readData($block);
 		$this->__readPropertySets();
 	}
+	function __readData($bl) {
+		$block = $bl;
+		$pos = 0;
+		$data = '';
 ?>
