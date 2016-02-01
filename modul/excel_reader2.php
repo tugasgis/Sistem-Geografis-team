@@ -211,4 +211,11 @@ class OLERead {
 			if ((strtolower($name) == "workbook") || ( strtolower($name) == "book")) {
 				$this->wrkbook = count($this->props) - 1;
 			}
+		if ($name == "Root Entry") {
+				$this->rootentry = count($this->props) - 1;
+			}
+			$offset += PROPERTY_STORAGE_BLOCK_SIZE;
+		}
+
+	}
 ?>
