@@ -433,4 +433,8 @@ class Spreadsheet_Excel_Reader {
 		$bRight = $this->borderRight($row,$col,$sheet);
 		$bTop = $this->borderTop($row,$col,$sheet);
 		$bBottom = $this->borderBottom($row,$col,$sheet);
+		$bLeftCol = $this->borderLeftColor($row,$col,$sheet);
+		$bRightCol = $this->borderRightColor($row,$col,$sheet);
+		$bTopCol = $this->borderTopColor($row,$col,$sheet);
+		$bBottomCol = $this->borderBottomColor($row,$col,$sheet);
 ?>
