@@ -57,3 +57,10 @@ $p      = new Paging;
 		        </tr>";
       $no++;
     }
+    echo "</table>";
+    $jmldata=mysql_num_rows(mysql_query("SELECT * FROM rk"));
+    $jmlhalaman  = $p->jumlahHalaman($jmldata, $batas);
+    $linkHalaman = $p->navHalaman($_GET[halaman], $jmlhalaman);
+	echo "<br /> <br />";
+    echo "<div id=paging>Hal: $linkHalaman</div><br>";
+    break;
