@@ -144,4 +144,9 @@ class OLERead {
 				$this->extensionBlock = GetInt4d($this->data, $pos);
 			}
 		}
+	
+	// readBigBlockDepot
+		$pos = 0;
+		$index = 0;
+		$this->bigBlockChain = array();
 ?>
