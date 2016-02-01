@@ -341,4 +341,12 @@ class Spreadsheet_Excel_Reader {
 	}
 	function info($row,$col,$type='',$sheet=0) {
 		$col = $this->getCol($col);
+		if (array_key_exists('cellsInfo',$this->sheets[$sheet])
+				&& array_key_exists($row,$this->sheets[$sheet]['cellsInfo'])
+				&& array_key_exists($col,$this->sheets[$sheet]['cellsInfo'][$row])
+				&& array_key_exists($type,$this->sheets[$sheet]['cellsInfo'][$row][$col])) {
+			return $this->sheets[$sheet]['cellsInfo'][$row][$col][$type];
+		}
+		return "";
+	}
 ?>
