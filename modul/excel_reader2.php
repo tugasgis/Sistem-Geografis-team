@@ -375,4 +375,11 @@ class Spreadsheet_Excel_Reader {
 	function rowcount($sheet=0) {
 		return $this->sheets[$sheet]['numRows'];
 	}
+	function colcount($sheet=0) {
+		return $this->sheets[$sheet]['numCols'];
+	}
+	function colwidth($col,$sheet=0) {
+		// Col width is actually the width of the number 0. So we have to estimate and come close
+		return $this->colInfo[$sheet][$col]['width']/9142*200; 
+	}
 ?>
