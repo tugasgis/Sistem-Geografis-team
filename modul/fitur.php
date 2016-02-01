@@ -12,3 +12,6 @@
                     <ul class="menu">
                     </ul>
                 </div>
+<div class="clear">
+          	<br>
+          </div>
