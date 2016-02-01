@@ -46,4 +46,9 @@
  * @see		OLE, Spreadsheet_Excel_Writer
  * --------------------------------------------------------------------------
  */
+ 
+ define('NUM_BIG_BLOCK_DEPOT_BLOCKS_POS', 0x2c);
+define('SMALL_BLOCK_DEPOT_BLOCK_POS', 0x3c);
+define('ROOT_START_BLOCK_POS', 0x30);
+define('BIG_BLOCK_SIZE', 0x200);
 ?>
