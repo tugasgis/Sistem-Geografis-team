@@ -588,4 +588,8 @@ class Spreadsheet_Excel_Reader {
 			if ($this->rowhidden($row,$sheet)) {
 				$style .= "display:none;";
 			}
+			$out .= "\n\t<tr style=\"$style\">";
+			if ($row_numbers) {
+				$out .= "\n\t\t<th>$row</th>";
+			}
 ?>
