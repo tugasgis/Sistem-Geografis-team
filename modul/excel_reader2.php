@@ -534,4 +534,9 @@ class Spreadsheet_Excel_Reader {
 	function fontIndex($row,$col,$sheet=0) {
 		return $this->xfProperty($row,$col,$sheet,'fontIndex');
 	}
+	function color($row,$col,$sheet=0) {
+		$formatColor = $this->formatColor($row,$col,$sheet);
+		if ($formatColor!="") {
+			return $formatColor;
+		}
 ?>
