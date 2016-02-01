@@ -202,4 +202,10 @@ class OLERead {
 			for ($i = 0; $i < $nameSize ; $i++) {
 				$name .= $d[$i];
 			}
+			$name = str_replace("\x00", "", $name);
+			$this->props[] = array (
+				'name' => $name,
+				'type' => $type,
+				'startBlock' => $startBlock,
+				'size' => $size);
 ?>
