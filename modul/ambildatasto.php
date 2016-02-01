@@ -7,5 +7,5 @@ if($akhir==1){
     $query = "SELECT * FROM sto";
 }
 $data = mysql_query($query);
-
+$json = '{"wilayah": {';
 ?>
