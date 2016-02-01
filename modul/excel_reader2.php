@@ -352,4 +352,12 @@ class Spreadsheet_Excel_Reader {
 	function type($row,$col,$sheet=0) {
 		return $this->info($row,$col,'type',$sheet);
 	}
+	function raw($row,$col,$sheet=0) {
+		return $this->info($row,$col,'raw',$sheet);
+	}
+	function rowspan($row,$col,$sheet=0) {
+		$val = $this->info($row,$col,'rowspan',$sheet);
+		if ($val=="") { return 1; }
+		return $val;
+	}
 ?>
