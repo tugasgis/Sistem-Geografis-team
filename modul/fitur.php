@@ -17,3 +17,5 @@
           </div>
  <p>FITUR-FITUR </p>
     <div id="tengah">
+ <p>Berikut ini adalah fitur-fitur utama yang ada pada aplikasi ini:</p>
+      <ul>
