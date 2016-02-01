@@ -80,3 +80,14 @@ STO :
     </select></br></p>
 
 <p>
+Daerah:<br>
+<input type=text id="daerah" value="Bogor" size=30></br></p>
+<p>Jumlah Dibangun:<br>
+    <input type=text id="jumlah" size=30></br></p>
+  <p>Sudah Dibangun:<br>
+      <input type=text id="sudah" size=30></br></p>
+    
+  <p>
+<button id="tombol_simpan">Simpan</button>
+<img src="../dss/ajax-loader.gif" style="display:none" id="loading"></p>
+</form>
