@@ -78,3 +78,11 @@ case "edit_rk":
         <tr><td>ID STO</td><td>     : <input type=text name='id_sto' size=30 value='$r[id_sto]'></td></tr>
 	<tr><td>Latitude</td><td>     : <input type=text name='lat' size=30 value='$r[lat]'></td></tr>
 	<tr><td>Longitude</td><td>     : <input type=text name='lng' size=30 value='$r[lng]'></td></tr>";
+
+ echo "<tr><td colspan=2><input type=submit value=Update>
+                            <input type=button value=Batal onclick=self.history.back()></td></tr>
+        </table>
+	</form>";
+    break;  
+}
+?>
