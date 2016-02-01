@@ -49,3 +49,17 @@ $tampil=mysql_query("SELECT * FROM dp ORDER BY id_dp DESC LIMIT $posisi,$batas")
 $no = $posisi+1;
     while ($r=mysql_fetch_array($tampil)){
       echo "
+		<tr align=center>
+		<td>$no</td>
+                <td width=50>$r[kode_dp]</td>
+                <td width=90>$r[alamat]</td>
+                <td width=60>$r[kapasitas]</td>
+                <td width=40>$r[jumlah_isi]</td>
+                <td width=40>$r[jumlah_rusak]</td>
+                <td width=40>$r[jumlah_wsucc]</td>
+		<td width=40>$r[jumlah_kosong]</td>
+		<td>$r[lat]</td>
+		<td>$r[lng]</td>
+                <td><a href=?jenis=dp&act=edit_dp&id=$r[id_dp]>Edit</a> | 
+	                  <a href=$aksi?jenis=dp&act=hapus&id=$r[id_dp]>Hapus</a>
+		</tr>";
