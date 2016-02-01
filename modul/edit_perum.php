@@ -40,4 +40,12 @@ function peta_awal(){
 
 $(document).ready(function(){
     $("#tombol_simpan").click(function(){
+        var x = $("#x").val();
+        var y = $("#y").val();
+		var nama = $("#nama").val();
+		var alamat = $("#alamat").val();
+		var kec = $("#kec").val();
+		var daerah = $("#daerah").val();
+		var jumlah = $("#jumlah").val();
+		var sudah = $("#sudah").val();
 ?>
