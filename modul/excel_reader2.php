@@ -441,4 +441,10 @@ class Spreadsheet_Excel_Reader {
 		if ($bLeft!="" && $bLeft==$bRight && $bRight==$bTop && $bTop==$bBottom) {
 			$css .= "border:" . $this->lineStylesCss[$bLeft] .";";
 		}
+		else {
+			if ($bLeft!="") { $css .= "border-left:" . $this->lineStylesCss[$bLeft] .";"; }
+			if ($bRight!="") { $css .= "border-right:" . $this->lineStylesCss[$bRight] .";"; }
+			if ($bTop!="") { $css .= "border-top:" . $this->lineStylesCss[$bTop] .";"; }
+			if ($bBottom!="") { $css .= "border-bottom:" . $this->lineStylesCss[$bBottom] .";"; }
+		}
 ?>
