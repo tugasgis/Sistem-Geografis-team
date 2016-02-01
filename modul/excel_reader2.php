@@ -581,5 +581,11 @@ class Spreadsheet_Excel_Reader {
 			}
 			$out .= "</tr></thead>\n";
 		}
-		
+		$out .= "<tbody>\n";
+		for($row=1;$row<=$this->rowcount($sheet);$row++) {
+			$rowheight = $this->rowheight($row,$sheet);
+			$style = "height:" . ($rowheight*(4/3)) . "px;";
+			if ($this->rowhidden($row,$sheet)) {
+				$style .= "display:none;";
+			}
 ?>
