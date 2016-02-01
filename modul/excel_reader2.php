@@ -814,4 +814,9 @@ class Spreadsheet_Excel_Reader {
 		if (count($parts)>2 && $num==0) {
 			$pattern = $parts[2];
 		}
+			// Zero pattern
+		if (count($parts)>1 && $num<0) {
+			$pattern = $parts[1];
+			$num = abs($num);
+		}
 ?>
