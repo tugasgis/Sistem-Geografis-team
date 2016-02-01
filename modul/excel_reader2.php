@@ -416,4 +416,8 @@ class Spreadsheet_Excel_Reader {
 		if ($color!="") {
 			$css .= "color:$color;";
 		}
+		$bold=$this->bold($row,$col,$sheet);
+		if ($bold) {
+			$css .= "font-weight:bold;";
+		}
 ?>
