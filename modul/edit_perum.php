@@ -67,4 +67,11 @@ $(document).ready(function(){
                 $("#sudah").val("");
                 ambildatabase('akhir');
             }
+        });
+    });
+    $("#tutup").click(function(){
+        $("#jendelainfo").fadeOut();
+    });
+});
+</script>
 ?>
