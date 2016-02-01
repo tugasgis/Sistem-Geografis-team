@@ -336,4 +336,7 @@ class Spreadsheet_Excel_Reader {
 		}
 		return "";
 	}
+	function value($row,$col,$sheet=0) {
+		return $this->val($row,$col,$sheet);
+	}
 ?>
