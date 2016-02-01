@@ -13,4 +13,6 @@ $json .= '"petak":[ ';
 while($x = mysql_fetch_array($data)){
     $json .= '{';
     $json .= '"id_sto":"'.$x['id_sto'].'",
+    "nama":"'.htmlspecialchars($x['nama_rk']).'",
+    "alamat":"'.htmlspecialchars($x['alamat']).'",
 ?>
