@@ -90,4 +90,8 @@ function array_comb($array1, $array2) {
 function v($data,$pos) {
 	return ord($data[$pos]) | ord($data[$pos+1])<<8;
 }
+
+class OLERead {
+	var $data = '';
+	function OLERead(){	}
 ?>
