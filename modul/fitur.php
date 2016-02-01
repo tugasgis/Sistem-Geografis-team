@@ -39,3 +39,6 @@
 <div class="footer_links">
                  <a href="#" title="">Copyright &copy; 2011 by Firmansyah Wahyudiarto & Lida Pratiwi Puteri</a><a href="#" title=""></a>       
         </div>
+        
+        <div class="copyright"></div>
+</div>
