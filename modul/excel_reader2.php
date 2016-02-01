@@ -497,4 +497,7 @@ class Spreadsheet_Excel_Reader {
 	function borderTop($row,$col,$sheet=0) {
 		return $this->xfProperty($row,$col,$sheet,'borderTop');
 	}
+	function borderBottom($row,$col,$sheet=0) {
+		return $this->xfProperty($row,$col,$sheet,'borderBottom');
+	}
 ?>
