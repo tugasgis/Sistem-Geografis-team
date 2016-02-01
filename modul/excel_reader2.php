@@ -560,4 +560,7 @@ class Spreadsheet_Excel_Reader {
 	function height($row,$col,$sheet=0) {
 		return $this->fontProperty($row,$col,$sheet,'height');
 	}
+	function font($row,$col,$sheet=0) {
+		return $this->fontProperty($row,$col,$sheet,'font');
+	}
 ?>
