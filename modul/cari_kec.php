@@ -7,5 +7,6 @@ include("connect.php");?>
 <p><a href="view_perum_barat.php" target="_blank">Kecamatan Bogor Barat</a></p>
 <p><a href="view_perum_slt.php" target="_blank">Kecamatan Bogor Selatan</a>  </p>
 <p><a href="view_perum_tgh.php" target="_blank">Kecamatan Bogor Tengah</a>  </p>
+<p><a href="view_perum_tim.php" target="_blank">Kecamatan Bogor Timur</a>  </p>
   </head>
   </html>
