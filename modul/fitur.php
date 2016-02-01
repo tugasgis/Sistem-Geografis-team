@@ -22,3 +22,5 @@
 	<li>Pemetaan secara Realtime menggunakan teknologi Google Maps</li>
         <li>Menggunakan teknologi Jquery, PHP, dan MySQL</li>
 	<li>Tampilan yang menarik dan user friendly</li>
+	<li>Editing data secara realtime dan interaktif</li>
+        <li>Terdapat fungsi-fungsi updating dan edit data secara mudah</li>
