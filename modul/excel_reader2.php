@@ -428,4 +428,9 @@ class Spreadsheet_Excel_Reader {
 		if ($underline) {
 			$css .= "text-decoration:underline;";
 		}
+		// Borders
+		$bLeft = $this->borderLeft($row,$col,$sheet);
+		$bRight = $this->borderRight($row,$col,$sheet);
+		$bTop = $this->borderTop($row,$col,$sheet);
+		$bBottom = $this->borderBottom($row,$col,$sheet);
 ?>
