@@ -72,3 +72,7 @@ $no = $posisi+1;
     echo "<br /> <br />";
     echo "<div id=paging>Hal: $linkHalaman</div><br>";
     break;
+
+case "edit_dp":
+    $edit = mysql_query("SELECT * FROM dp WHERE id_dp='$_GET[id]'");
+    $r    = mysql_fetch_array($edit);
