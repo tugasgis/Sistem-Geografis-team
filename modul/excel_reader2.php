@@ -1010,4 +1010,70 @@ class Spreadsheet_Excel_Reader {
 							$formattingRuns = v($data,$spos);
 							$spos += 2;
 						}
+						if ($extendedString) {
+							// Read in cchExtRst
+							$extendedRunLength = $this->_GetInt4d($data, $spos);
+							$spos += 4;
+						}
+
+						$len = ($asciiEncoding)? $numChars : $numChars*2;
+						if ($spos + $len < $limitpos) {
+							$retstr = substr($data, $spos, $len);
+							$spos += $len;
+						}
+						else{
+							// found countinue
+							$retstr = substr($data, $spos, $limitpos - $spos);
+							$bytesRead = $limitpos - $spos;
+							$charsLeft = $numChars - (($asciiEncoding) ? $bytesRead : ($bytesRead / 2));
+							$spos = $limitpos;
+
+							while ($charsLeft > 0){
+								$opcode = v($data,$spos);
+								$conlength = v($data,$spos+2);
+								if ($opcode != 0x3c) {
+									return -1;
+								}
+								$spos += 4;
+								$limitpos = $spos + $conlength;
+								$option = ord($data[$spos]);
+								$spos += 1;
+								if ($asciiEncoding && ($option == 0)) {
+									$len = min($charsLeft, $limitpos - $spos); // min($charsLeft, $conlength);
+									$retstr .= substr($data, $spos, $len);
+									$charsLeft -= $len;
+									$asciiEncoding = true;
+								}
+								elseif (!$asciiEncoding && ($option != 0)) {
+									$len = min($charsLeft * 2, $limitpos - $spos); // min($charsLeft, $conlength);
+									$retstr .= substr($data, $spos, $len);
+									$charsLeft -= $len/2;
+									$asciiEncoding = false;
+								}
+								elseif (!$asciiEncoding && ($option == 0)) {
+									// Bummer - the string starts off as Unicode, but after the
+									// continuation it is in straightforward ASCII encoding
+									$len = min($charsLeft, $limitpos - $spos); // min($charsLeft, $conlength);
+									for ($j = 0; $j < $len; $j++) {
+										$retstr .= $data[$spos + $j].chr(0);
+									}
+									$charsLeft -= $len;
+									$asciiEncoding = false;
+								}
+								else{
+									$newstr = '';
+									for ($j = 0; $j < strlen($retstr); $j++) {
+										$newstr = $retstr[$j].chr(0);
+									}
+									$retstr = $newstr;
+									$len = min($charsLeft * 2, $limitpos - $spos); // min($charsLeft, $conlength);
+									$retstr .= substr($data, $spos, $len);
+									$charsLeft -= $len/2;
+									$asciiEncoding = false;
+								}
+								$spos += $len;
+							}
+						}
+						$retstr = ($asciiEncoding) ? $retstr : $this->_encodeUTF16($retstr);
+
 ?>
