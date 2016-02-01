@@ -968,4 +968,46 @@ class Spreadsheet_Excel_Reader {
 			($version != SPREADSHEET_EXCEL_READER_BIFF7)) {
 			return false;
 		}
+		if ($substreamType != SPREADSHEET_EXCEL_READER_WORKBOOKGLOBALS){
+			return false;
+		}
+
+		$pos += $length + 4;
+
+		$code = v($data,$pos);
+		$length = v($data,$pos+2);
+
+		while ($code != SPREADSHEET_EXCEL_READER_TYPE_EOF) {
+			switch ($code) {
+				case SPREADSHEET_EXCEL_READER_TYPE_SST:
+					$spos = $pos + 4;
+					$limitpos = $spos + $length;
+					$uniqueStrings = $this->_GetInt4d($data, $spos+4);
+					$spos += 8;
+					for ($i = 0; $i < $uniqueStrings; $i++) {
+						// Read in the number of characters
+						if ($spos == $limitpos) {
+							$opcode = v($data,$spos);
+							$conlength = v($data,$spos+2);
+							if ($opcode != 0x3c) {
+								return -1;
+							}
+							$spos += 4;
+							$limitpos = $spos + $conlength;
+						}
+						$numChars = ord($data[$spos]) | (ord($data[$spos+1]) << 8);
+						$spos += 2;
+						$optionFlags = ord($data[$spos]);
+						$spos++;
+						$asciiEncoding = (($optionFlags & 0x01) == 0) ;
+						$extendedString = ( ($optionFlags & 0x04) != 0);
+
+						// See if string contains formatting information
+						$richString = ( ($optionFlags & 0x08) != 0);
+
+						if ($richString) {
+							// Read in the crun
+							$formattingRuns = v($data,$spos);
+							$spos += 2;
+						}
 ?>
