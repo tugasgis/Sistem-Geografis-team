@@ -75,5 +75,13 @@ case "edit_sto":
     $r    = mysql_fetch_array($edit);
 
  	echo "<h2>Edit Data STO</h2>
-          <form method=POST action=$aksi?jenis=sto&act=edit_sto>
-          <input type=hidden name=id value=$r[id_sto]>
+          	<form method=POST action=$aksi?jenis=sto&act=edit_sto>
+          	<input type=hidden name=id value=$r[id_sto]>
+		<table>
+		<tr><td>Kode STO</td><td>     : <input type=text name='kode_sto' size=30 value='$r[kode_sto]'></td></tr>
+          	<tr><td>Nama STO</td><td>     : <input type=text name='nama_sto' size=30 value='$r[nama_sto]'></td></tr>
+          	<tr><td>Alamat</td><td>  : <input type=text name='alamat' size=30 value='$r[alamat]'></td></tr>
+          	<tr><td>ID</td><td>     : <input type=text name='id' size=30 value='$r[id]'></td></tr>
+		<tr><td>Daerah</td><td>  : <input type=text name='daerah' size=30 value='$r[daerah]'></td></tr>
+		<tr><td>Latitude</td><td>     : <input type=text name='lat' size=30 value='$r[lat]'></td></tr>
+		<tr><td>Longitude</td><td>     : <input type=text name='lng' size=30 value='$r[lng]'></td></tr>";
