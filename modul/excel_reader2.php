@@ -385,4 +385,7 @@ class Spreadsheet_Excel_Reader {
 	function colhidden($col,$sheet=0) {
 		return !!$this->colInfo[$sheet][$col]['hidden'];
 	}
+	function rowheight($row,$sheet=0) {
+		return $this->rowInfo[$sheet][$row]['height'];
+	}
 ?>
