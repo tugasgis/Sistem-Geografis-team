@@ -117,4 +117,8 @@ class OLERead {
 	$bigBlockDepotBlocks = array();
 		$pos = BIG_BLOCK_DEPOT_BLOCKS_POS;
 		$bbdBlocks = $this->numBigBlockDepotBlocks;
+		
+	if ($this->numExtensionBlocks != 0) {
+			$bbdBlocks = (BIG_BLOCK_SIZE - BIG_BLOCK_DEPOT_BLOCKS_POS)/4;
+		}
 ?>
