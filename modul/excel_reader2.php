@@ -639,4 +639,9 @@ class Spreadsheet_Excel_Reader {
 	var $sheets = array();
 	var $data;
 	var $_ole;
+	var $_defaultEncoding = "UTF-8";
+	var $_defaultFormat = SPREADSHEET_EXCEL_READER_DEF_NUM_FORMAT;
+	var $_columnsFormat = array();
+	var $_rowoffset = 1;
+	var $_coloffset = 1;
 ?>
