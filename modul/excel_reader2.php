@@ -391,4 +391,16 @@ class Spreadsheet_Excel_Reader {
 	function rowhidden($row,$sheet=0) {
 		return !!$this->rowInfo[$sheet][$row]['hidden'];
 	}
+	// GET THE CSS FOR FORMATTING
+	// ==========================
+	function style($row,$col,$sheet=0,$properties='') {
+		$css = "";
+		$font=$this->font($row,$col,$sheet);
+		if ($font!="") {
+			$css .= "font-family:$font;";
+		}
+		$align=$this->align($row,$col,$sheet);
+		if ($align!="") {
+			$css .= "text-align:$align;";
+		}
 ?>
