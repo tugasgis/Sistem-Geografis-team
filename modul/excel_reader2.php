@@ -837,4 +837,16 @@ class Spreadsheet_Excel_Reader {
 
 		// TEMPORARY - Convert # to 0
 		$pattern = preg_replace("/\#/","0",$pattern);
+		// Find out if we need comma formatting
+		$has_commas = preg_match("/,/",$pattern);
+		if ($has_commas) {
+			$pattern = preg_replace("/,/","",$pattern);
+		}
+
+		// Handle Percentages
+		if (preg_match("/\d(\%)([^\%]|$)/",$pattern,$matches)) {
+			$num = $num * 100;
+			$pattern = preg_replace("/(\d)(\%)([^\%]|$)/","$1%$3",$pattern);
+		}
+		
 ?>
