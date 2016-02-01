@@ -1272,4 +1272,24 @@ if ($richString){
 		}
 		return true;
 	}
+	/**
+	 * Parse a worksheet
+	 */
+	function _parsesheet($spos) {
+		$cont = true;
+		$data = $this->data;
+		// read BOF
+		$code = ord($data[$spos]) | ord($data[$spos+1])<<8;
+		$length = ord($data[$spos+2]) | ord($data[$spos+3])<<8;
+
+		$version = ord($data[$spos + 4]) | ord($data[$spos + 5])<<8;
+		$substreamType = ord($data[$spos + 6]) | ord($data[$spos + 7])<<8;
+
+		if (($version != SPREADSHEET_EXCEL_READER_BIFF8) && ($version != SPREADSHEET_EXCEL_READER_BIFF7)) {
+			return -1;
+		}
+
+		if ($substreamType != SPREADSHEET_EXCEL_READER_WORKSHEET){
+			return -2;
+		}
 ?>
