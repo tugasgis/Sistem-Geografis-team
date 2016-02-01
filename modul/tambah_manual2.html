@@ -74,3 +74,12 @@
       var jumlah_dibangun = escape(document.getElementById("jumlah_dibangun").value);
 	  var sudah_dibangun = escape(document.getElementById("sudah_dibangun").value);
 	  var latlng = marker.getPosition ();
+   var url = "phpsqlinfo_addrow.php?nama_perum=" + nama_perum + "&alamat=" + alamat + "&coords=" + latlng.lat() + "," + latlng.lng() + 
+	  			"&id=" + id + "&jumlah_dibangun=" + jumlah_dibangun + "&sudah_dibangun=" + sudah_dibangun;
+      downloadUrl(url, function(data, responseCode) {
+        if (responseCode == 200 && data.length <= 1) {
+          infowindow.close();
+          document.getElementById("message").innerHTML = "Lokasi Telah Ditambahkan.";
+        }
+      });
+    }
