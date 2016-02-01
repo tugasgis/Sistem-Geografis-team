@@ -626,5 +626,7 @@ class Spreadsheet_Excel_Reader {
 		}
 		$out .= "</tbody></table>";
 		return $out;
-	}	
+	}
+	// --------------
+	// END PUBLIC API
 ?>
