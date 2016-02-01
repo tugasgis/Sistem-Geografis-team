@@ -382,4 +382,7 @@ class Spreadsheet_Excel_Reader {
 		// Col width is actually the width of the number 0. So we have to estimate and come close
 		return $this->colInfo[$sheet][$col]['width']/9142*200; 
 	}
+	function colhidden($col,$sheet=0) {
+		return !!$this->colInfo[$sheet][$col]['hidden'];
+	}
 ?>
