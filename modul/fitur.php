@@ -15,3 +15,5 @@
 <div class="clear">
           	<br>
           </div>
+ <p>FITUR-FITUR </p>
+    <div id="tengah">
