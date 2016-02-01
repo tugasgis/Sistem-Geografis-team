@@ -572,4 +572,14 @@ class Spreadsheet_Excel_Reader {
 			if ($row_numbers) {
 				$out .= "\n\t\t<th>&nbsp</th>";
 			}
+			for($i=1;$i<=$this->colcount($sheet);$i++) {
+				$style = "width:" . ($this->colwidth($i,$sheet)*1) . "px;";
+				if ($this->colhidden($i,$sheet)) {
+					$style .= "display:none;";
+				}
+				$out .= "\n\t\t<th style=\"$style\">" . strtoupper($this->colindexes[$i]) . "</th>";
+			}
+			$out .= "</tr></thead>\n";
+		}
+		
 ?>
