@@ -25,4 +25,13 @@ include("class_paging.php");
 switch($_GET[act]){
   // Tampilkan RK pd tabel
   default:
-    echo "<table border=1>
+  echo "<table border=1>
+  	<tr>
+	<th>No</th>
+	<th>Nama RK</th>
+	<th>Alamat</th>
+	<th>ID STO</th>
+	<th>Latitude</th>
+	<th>Longitude</th>
+	<th>Aksi</th>
+	</tr>";
