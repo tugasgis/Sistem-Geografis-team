@@ -152,4 +152,10 @@ class OLERead {
 	for ($i = 0; $i < $this->numBigBlockDepotBlocks; $i++) {
 			$pos = ($bigBlockDepotBlocks[$i] + 1) * BIG_BLOCK_SIZE;
 			//echo "pos = $pos";
+	for ($j = 0 ; $j < BIG_BLOCK_SIZE / 4; $j++) {
+				$this->bigBlockChain[$index] = GetInt4d($this->data, $pos);
+				$pos += 4 ;
+				$index++;
+			}
+		}
 ?>
