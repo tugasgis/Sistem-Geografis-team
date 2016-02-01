@@ -113,4 +113,13 @@ if (!(isset($tes))) { ?>
       <legend><strong>Perumahan</strong></legend>
       <table>
 <tr>
+<form name="form1" method="post" action="../dss/tambahperum.html">
+<td valign=top>
+<p>
+X : <input type=text id=x><br>
+Y : <input type=text id=y><p>
+Nama :<br>
+<input name="nama" type="text" id="nama" value="<?php echo $nama; ?>"><p>
+Alamat :<br>
+<textarea cols=20 rows=8 id="alamat" value="<?php echo $alamat; ?>"></textarea><p>
 ?>
