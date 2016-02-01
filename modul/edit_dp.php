@@ -10,3 +10,12 @@ include("class_paging.php");
 
 <div id="main_content">
 		<div id="top_banner"></div>
+
+<div id="page_content">
+                <div>
+                    <ul class="menu">
+                    </ul>
+                </div>
+          <div class="clear">
+          	<br>
+          </div>
