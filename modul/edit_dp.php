@@ -76,3 +76,17 @@ $no = $posisi+1;
 case "edit_dp":
     $edit = mysql_query("SELECT * FROM dp WHERE id_dp='$_GET[id]'");
     $r    = mysql_fetch_array($edit);
+    
+    echo "<h2>Edit Data DP</h2>
+        <form method=POST action=$aksi?jenis=dp&act=edit_dp>
+        <input type=hidden name=id value=$r[id_dp]>
+        <table>
+        <tr><td>Kode Dp</td><td>     : <input type=text name='kode_dp' size=30 value='$r[kode_dp]'></td></tr>
+        <tr><td>Alamat</td><td>  : <input type=text name='alamat' size=30 value='$r[alamat]'></td></tr>
+        <tr><td>Kapasitas</td><td>     : <input type=text name='kapasitas' size=30 value='$r[kapasitas]'></td></tr>
+        <tr><td>Jumlah Isi</td><td>  : <input type=text name='jumlah_isi' size=30 value='$r[jumlah_isi]'></td></tr>
+	<tr><td>Jumlah Rusak</td><td>     : <input type=text name='jumlah_rusak' size=30 value='$r[jumlah_rusak]'></td></tr>
+        <tr><td>Jumlah WSUCC</td><td>  : <input type=text name='jumlah_wsucc' size=30 value='$r[jumlah_wsucc]'></td></tr>
+	<tr><td>Jumlah Kosong</td><td>     : <input type=text name='jumlah_kosong' size=30 value='$r[jumlah_kosong]'></td></tr>
+	<tr><td>Latitude</td><td>     : <input type=text name='lat' size=30 value='$r[lat]'></td></tr>
+	<tr><td>Longitude</td><td>     : <input type=text name='lng' size=30 value='$r[lng]'></td></tr>";
