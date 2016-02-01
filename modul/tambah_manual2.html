@@ -30,5 +30,12 @@
     });
     $("#x").val(lokasi.lat());
     $("#y").val(lokasi.lng());
+     function initialize() {
+      var latlng = new google.maps.LatLng(-6.589155,106.793032);
+      var options = {
+        zoom: 14,
+        center: latlng,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      }
 
 }
