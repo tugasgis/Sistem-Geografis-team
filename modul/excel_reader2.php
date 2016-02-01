@@ -94,4 +94,10 @@ function v($data,$pos) {
 class OLERead {
 	var $data = '';
 	function OLERead(){	}
+	function read($sFileName){
+		// check if file exist and is readable (Darko Miljanovic)
+		if(!is_readable($sFileName)) {
+			$this->error = 1;
+			return false;
+		}
 ?>
