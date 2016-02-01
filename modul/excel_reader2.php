@@ -509,4 +509,7 @@ class Spreadsheet_Excel_Reader {
 	function borderTopColor($row,$col,$sheet=0) {
 		return $this->colors[$this->xfProperty($row,$col,$sheet,'borderTopColor')];
 	}
+	function borderBottomColor($row,$col,$sheet=0) {
+		return $this->colors[$this->xfProperty($row,$col,$sheet,'borderBottomColor')];
+	}
 ?>
