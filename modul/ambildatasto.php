@@ -8,4 +8,5 @@ if($akhir==1){
 }
 $data = mysql_query($query);
 $json = '{"wilayah": {';
+$json .= '"petak":[ ';
 ?>
