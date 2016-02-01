@@ -466,4 +466,13 @@ class Spreadsheet_Excel_Reader {
 	function formatColor($row,$col,$sheet=0) {
 		return $this->info($row,$col,'formatColor',$sheet);
 	}
+	// CELL (XF) PROPERTIES
+	// ====================
+	function xfRecord($row,$col,$sheet=0) {
+		$xfIndex = $this->info($row,$col,'xfIndex',$sheet);
+		if ($xfIndex!="") {
+			return $this->xfRecords[$xfIndex];
+		}
+		return null;
+	}
 ?>
