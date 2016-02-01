@@ -163,4 +163,7 @@ class OLERead {
 		$index = 0;
 		$sbdBlock = $this->sbdStartBlock;
 		$this->smallBlockChain = array();
+		while ($sbdBlock != -2) {
+		  $pos = ($sbdBlock + 1) * BIG_BLOCK_SIZE;
+		  for ($j = 0; $j < BIG_BLOCK_SIZE / 4; $j++) {
 ?>
