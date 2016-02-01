@@ -26,3 +26,5 @@
         <li>Terdapat fungsi-fungsi updating dan edit data secara mudah</li>
         <li>Terdapat fungsi ekspor dan impor data dari dan ke MySQL ke dalam format Microsoft Excel</li>
         <li>Petunjuk penggunaan</li>
+</ul>
+      <form name="form1" method="post" action="../halaman_utama.php">
