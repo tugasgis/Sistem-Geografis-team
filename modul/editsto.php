@@ -91,3 +91,7 @@ case "edit_sto":
 		</table>
 		  </form>";
     break;  
+}
+?>
+<br>
+<a href="../halaman_utama.php">Kembali</a>
