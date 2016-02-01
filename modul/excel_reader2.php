@@ -891,5 +891,11 @@ class Spreadsheet_Excel_Reader {
 			$this->read($file);
 		}
 	}
+	/**
+	 * Set the encoding method
+	 */
+	function setOutputEncoding($encoding) {
+		$this->_defaultEncoding = $encoding;
+	}
 		
 ?>
