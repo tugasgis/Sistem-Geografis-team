@@ -149,4 +149,7 @@ class OLERead {
 		$pos = 0;
 		$index = 0;
 		$this->bigBlockChain = array();
+	for ($i = 0; $i < $this->numBigBlockDepotBlocks; $i++) {
+			$pos = ($bigBlockDepotBlocks[$i] + 1) * BIG_BLOCK_SIZE;
+			//echo "pos = $pos";
 ?>
