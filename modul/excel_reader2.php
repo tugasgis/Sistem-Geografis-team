@@ -172,4 +172,10 @@ class OLERead {
 		  }
 		  $sbdBlock = $this->bigBlockChain[$sbdBlock];
 		}
+		// readData(rootStartBlock)
+		$block = $this->rootStartBlock;
+		$pos = 0;
+		$this->entry = $this->__readData($block);
+		$this->__readPropertySets();
+	}
 ?>
