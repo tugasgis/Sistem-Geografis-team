@@ -557,4 +557,7 @@ class Spreadsheet_Excel_Reader {
 	function underline($row,$col,$sheet=0) {
 		return $this->fontProperty($row,$col,$sheet,'under');
 	}
+	function height($row,$col,$sheet=0) {
+		return $this->fontProperty($row,$col,$sheet,'height');
+	}
 ?>
