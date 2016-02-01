@@ -554,4 +554,7 @@ class Spreadsheet_Excel_Reader {
 	function italic($row,$col,$sheet=0) {
 		return $this->fontProperty($row,$col,$sheet,'italic');
 	}
+	function underline($row,$col,$sheet=0) {
+		return $this->fontProperty($row,$col,$sheet,'under');
+	}
 ?>
