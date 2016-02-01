@@ -799,4 +799,11 @@ class Spreadsheet_Excel_Reader {
 		while (ord($data[$start + $len]) + ord($data[$start + $len + 1]) > 0) $len++;
 		return substr($data, $start, $len);
 	}
+	// ADDED by Matt Kruse for better formatting
+	function _format_value($format,$num,$f) {
+		// 49==TEXT format
+		// http://code.google.com/p/php-excel-reader/issues/detail?id=7
+		if ( (!$f && $format=="%s") || ($f==49) || ($format=="GENERAL") ) { 
+			return array('string'=>$num, 'formatColor'=>null); 
+		}
 ?>
