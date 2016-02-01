@@ -229,4 +229,10 @@ class OLERead {
 				  $streamData .= substr($rootdata, $pos, SMALL_BLOCK_SIZE);
 				  $block = $this->smallBlockChain[$block];
 			}
+			return $streamData;
+		}else{
+			$numBlocks = $this->props[$this->wrkbook]['size'] / BIG_BLOCK_SIZE;
+			if ($this->props[$this->wrkbook]['size'] % BIG_BLOCK_SIZE != 0) {
+				$numBlocks++;
+			}
 ?>
