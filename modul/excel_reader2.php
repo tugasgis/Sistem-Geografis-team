@@ -249,4 +249,6 @@ class OLERead {
 	}
 
 }
+define('SPREADSHEET_EXCEL_READER_BIFF8',			 0x600);
+define('SPREADSHEET_EXCEL_READER_BIFF7',			 0x500);
 ?>
