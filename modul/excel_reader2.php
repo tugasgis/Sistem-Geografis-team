@@ -928,4 +928,23 @@ class Spreadsheet_Excel_Reader {
 	function setColumnFormat($column, $sFormat) {
 		$this->_columnsFormat[$column] = $sFormat;
 	}
+	
+	/**
+	 * Read the spreadsheet file using OLE, then parse
+	 */
+	function read($sFileName) {
+		$res = $this->_ole->read($sFileName);
+
+		// oops, something goes wrong (Darko Miljanovic)
+		if($res === false) {
+			// check error code
+			if($this->_ole->error == 1) {
+				// bad file
+				die('The filename ' . $sFileName . ' is not readable');
+			}
+			// check other error codes here (eg bad fileformat, etc...)
+		}
+		$this->data = $this->_ole->getWorkBook();
+		$this->_parse();
+	}
 ?>
