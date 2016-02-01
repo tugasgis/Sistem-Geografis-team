@@ -42,3 +42,5 @@ switch($_GET[act]){
 $p      = new Paging;
     $batas  = 10;
     $posisi = $p->cariPosisi($batas);
+
+$tampil=mysql_query("SELECT * FROM sto ORDER BY id_sto DESC LIMIT $posisi,$batas");
