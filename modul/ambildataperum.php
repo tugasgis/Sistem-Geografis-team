@@ -17,4 +17,7 @@ while($x = mysql_fetch_array($data)){
     "alamat":"'.htmlspecialchars($x['alamat']).'",
     "idsto":"'.$x['id_sto'].'",
 		"x":"'.$x['lat'].'",
+		 "y":"'.$x['lng'].'"
+    },';
+}
 ?>
