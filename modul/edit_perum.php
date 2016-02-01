@@ -37,4 +37,7 @@ function peta_awal(){
     });
     ambildatabase('awal');
 }
+
+$(document).ready(function(){
+    $("#tombol_simpan").click(function(){
 ?>
