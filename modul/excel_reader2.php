@@ -208,4 +208,7 @@ class OLERead {
 				'type' => $type,
 				'startBlock' => $startBlock,
 				'size' => $size);
+			if ((strtolower($name) == "workbook") || ( strtolower($name) == "book")) {
+				$this->wrkbook = count($this->props) - 1;
+			}
 ?>
