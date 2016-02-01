@@ -317,4 +317,13 @@ class Spreadsheet_Excel_Reader {
 		}
 		return $info;
 	}
+	function getCol($col) {
+		if (is_string($col)) {
+			$col = strtolower($col);
+			if (array_key_exists($col,$this->colnames)) {
+				$col = $this->colnames[$col];
+			}
+		}
+		return $col;
+	}
 ?>
