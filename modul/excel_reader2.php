@@ -305,4 +305,8 @@ class Spreadsheet_Excel_Reader {
 	var $colindexes = array();
 	var $standardColWidth = 0;
 	var $defaultColWidth = 0;
+	function myHex($d) {
+		if ($d < 16) return "0" . dechex($d);
+		return dechex($d);
+	}
 ?>
