@@ -551,4 +551,7 @@ class Spreadsheet_Excel_Reader {
 	function bold($row,$col,$sheet=0) {
 		return $this->fontProperty($row,$col,$sheet,'bold');
 	}
+	function italic($row,$col,$sheet=0) {
+		return $this->fontProperty($row,$col,$sheet,'italic');
+	}
 ?>
