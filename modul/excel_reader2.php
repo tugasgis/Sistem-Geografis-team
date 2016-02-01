@@ -105,4 +105,8 @@ class OLERead {
 			$this->error = 1;
 			return false;
    		}
+   		if (substr($this->data, 0, 8) != IDENTIFIER_OLE) {
+			$this->error = 1;
+			return false;
+   		}
 ?>
