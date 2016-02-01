@@ -412,4 +412,8 @@ class Spreadsheet_Excel_Reader {
 			$bgcolor = $this->colors[$bgcolor];
 			$css .= "background-color:$bgcolor;";
 		}
+		$color=$this->color($row,$col,$sheet);
+		if ($color!="") {
+			$css .= "color:$color;";
+		}
 ?>
