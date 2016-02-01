@@ -27,3 +27,16 @@ switch($_GET[act]){
   // Tampilkan DP pd tabel
   default:
     echo "<table border=1>
+	<tr>
+	<th>No</th>
+	<th>Kode DP</th>
+	<th>Alamat</th>
+	<th>Kapasitas</th>
+	<th>Jml Isi</th>
+	<th>Jml Rusak</th>
+	<th>Jml WSUCC</th>
+	<th>Jml kosong</th>
+	<th>Latitude</th>
+	<th>Longitude</th>
+	<th>Aksi</th>
+	</tr>";
