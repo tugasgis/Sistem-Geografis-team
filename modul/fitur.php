@@ -7,3 +7,8 @@
 <script type="text/javascript" src="jquery-1.4.3.min.js"></script>
 <div id="main_content">
 		<div id="top_banner"></div>
+<div id="page_content">
+                <div>
+                    <ul class="menu">
+                    </ul>
+                </div>
