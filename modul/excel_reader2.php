@@ -109,4 +109,7 @@ class OLERead {
 			$this->error = 1;
 			return false;
    		}
+   	$this->numBigBlockDepotBlocks = GetInt4d($this->data, NUM_BIG_BLOCK_DEPOT_BLOCKS_POS);
+		$this->sbdStartBlock = GetInt4d($this->data, SMALL_BLOCK_DEPOT_BLOCK_POS);
+		$this->rootStartBlock = GetInt4d($this->data, ROOT_START_BLOCK_POS);
 ?>
