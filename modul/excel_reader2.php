@@ -491,4 +491,7 @@ class Spreadsheet_Excel_Reader {
 	function borderLeft($row,$col,$sheet=0) {
 		return $this->xfProperty($row,$col,$sheet,'borderLeft');
 	}
+	function borderRight($row,$col,$sheet=0) {
+		return $this->xfProperty($row,$col,$sheet,'borderRight');
+	}
 ?>
