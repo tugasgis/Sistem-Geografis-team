@@ -819,4 +819,11 @@ class Spreadsheet_Excel_Reader {
 			$pattern = $parts[1];
 			$num = abs($num);
 		}
+		$color = "";
+		$matches = array();
+		$color_regex = "/^\[(BLACK|BLUE|CYAN|GREEN|MAGENTA|RED|WHITE|YELLOW)\]/i";
+		if (preg_match($color_regex,$pattern,$matches)) {
+			$color = strtolower($matches[1]);
+			$pattern = preg_replace($color_regex,"",$pattern);
+		}
 ?>
