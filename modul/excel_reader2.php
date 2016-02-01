@@ -563,4 +563,13 @@ class Spreadsheet_Excel_Reader {
 	function font($row,$col,$sheet=0) {
 		return $this->fontProperty($row,$col,$sheet,'font');
 	}
+	// DUMP AN HTML TABLE OF THE ENTIRE XLS DATA
+	// =========================================
+	function dump($row_numbers=false,$col_letters=false,$sheet=0,$table_class='excel') {
+		$out = "<table class=\"$table_class\" cellspacing=0>";
+		if ($col_letters) {
+			$out .= "<thead>\n\t<tr>";
+			if ($row_numbers) {
+				$out .= "\n\t\t<th>&nbsp</th>";
+			}
 ?>
