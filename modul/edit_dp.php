@@ -97,3 +97,7 @@ echo "<tr><td colspan=2><input type=submit value=Update>
     break;  
 }
 ?>
+<br>
+<a href="../halaman_utama.php">Kembali</a>
+    </div>
+  </div>
