@@ -31,4 +31,10 @@ function peta_awal(){
         center: bogor,
         mapTypeId: google.maps.MapTypeId.SATELLITE
         };
+    peta = new google.maps.Map(document.getElementById("petaku"),petaoption);
+    google.maps.event.addListener(peta,'click',function(event){
+        kasihtanda(event.latLng);
+    });
+    ambildatabase('awal');
+}
 ?>
