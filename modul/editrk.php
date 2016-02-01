@@ -68,3 +68,13 @@ $p      = new Paging;
 case "edit_rk":
     $edit = mysql_query("SELECT * FROM rk WHERE id_rk='$_GET[id]'");
     $r    = mysql_fetch_array($edit);
+    
+    echo "<h2>Edit Data RK</h2>
+        <form method=POST action=$aksi?jenis=rk&act=edit_rk>
+        <input type=hidden name=id value=$r[id_rk]>
+        <table>
+        <tr><td>Nama rk</td><td>     : <input type=text name='nama_rk' size=30 value='$r[nama_rk]'></td></tr>
+        <tr><td>Alamat</td><td>  : <input type=text name='alamat' size=30 value='$r[alamat]'></td></tr>
+        <tr><td>ID STO</td><td>     : <input type=text name='id_sto' size=30 value='$r[id_sto]'></td></tr>
+	<tr><td>Latitude</td><td>     : <input type=text name='lat' size=30 value='$r[lat]'></td></tr>
+	<tr><td>Longitude</td><td>     : <input type=text name='lng' size=30 value='$r[lng]'></td></tr>";
