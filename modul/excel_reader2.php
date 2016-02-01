@@ -77,4 +77,13 @@ function gmgetdate($ts = null){
 	$k = array('seconds','minutes','hours','mday','wday','mon','year','yday','weekday','month',0);
 	return(array_comb($k,split(":",gmdate('s:i:G:j:w:n:Y:z:l:F:U',is_null($ts)?time():$ts))));
 	} 
+	
+	// Added for PHP4 compatibility
+function array_comb($array1, $array2) {
+	$out = array();
+	foreach ($array1 as $key => $value) {
+		$out[$value] = $array2[$key];
+	}
+	return $out;
+}
 ?>
