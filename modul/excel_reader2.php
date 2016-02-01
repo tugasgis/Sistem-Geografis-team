@@ -548,4 +548,7 @@ class Spreadsheet_Excel_Reader {
 		}
 		return "";
 	}
+	function bold($row,$col,$sheet=0) {
+		return $this->fontProperty($row,$col,$sheet,'bold');
+	}
 ?>
