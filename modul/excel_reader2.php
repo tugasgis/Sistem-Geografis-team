@@ -910,4 +910,22 @@ class Spreadsheet_Excel_Reader {
 			$this->_encoderFunction = function_exists('mb_convert_encoding') ? 'mb_convert_encoding' : '';
 		}
 	}	
+	
+	function setRowColOffset($iOffset) {
+		$this->_rowoffset = $iOffset;
+		$this->_coloffset = $iOffset;
+	}
+/**
+	 * Set the default number format
+	 */
+	function setDefaultFormat($sFormat) {
+		$this->_defaultFormat = $sFormat;
+	}
+
+	/**
+	 * Force a column to use a certain format
+	 */
+	function setColumnFormat($column, $sFormat) {
+		$this->_columnsFormat[$column] = $sFormat;
+	}
 ?>
