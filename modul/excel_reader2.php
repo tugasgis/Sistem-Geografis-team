@@ -947,4 +947,25 @@ class Spreadsheet_Excel_Reader {
 		$this->data = $this->_ole->getWorkBook();
 		$this->_parse();
 	}
+	/**
+	 * Parse a workbook
+	 *
+	 * @access private
+	 * @return bool
+	 */
+	function _parse() {
+		$pos = 0;
+		$data = $this->data;
+
+		$code = v($data,$pos);
+		$length = v($data,$pos+2);
+		$version = v($data,$pos+4);
+		$substreamType = v($data,$pos+6);
+
+		$this->version = $version;
+
+		if (($version != SPREADSHEET_EXCEL_READER_BIFF8) &&
+			($version != SPREADSHEET_EXCEL_READER_BIFF7)) {
+			return false;
+		}
 ?>
