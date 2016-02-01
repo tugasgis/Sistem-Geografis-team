@@ -58,3 +58,25 @@ function peta_awal(){
 <td valign=top>
 <form method="post" action="coba.php">
 <p>
+X : <input type=text id=x><br>
+Y : <input type=text id=y><p>
+Nama Rumah Kabel:<br>
+<input type=text id="nama" size=30><p>
+STO :
+<?php $hasil = mysql_query("select * from sto"); ?>
+<select name='kode_sto'>
+<?php while($row=mysql_fetch_array($hasil))?>
+<option value="<?php echo "$row[kode_sto]";?>"> <?php echo "$row[kode_sto]";?></option>
+       </select>
+<label></label>
+<p>Kecamatan:<br>
+    <select id='kec'>
+      <option value='1' SELECTED>Bogor Barat</option>
+      <option value='2' SELECTED>Bogor Selatan</option>
+      <option value='3' SELECTED>Bogor Tengah</option>
+      <option value='4' SELECTED>Bogor Timur</option>
+      <option value='5' SELECTED>Bogor Utara</option>
+      <option value='6' SELECTED>Tanah Sareal</option>
+    </select></br></p>
+
+<p>
