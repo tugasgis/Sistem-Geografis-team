@@ -133,4 +133,9 @@ class OLERead {
 				$bigBlockDepotBlocks[$i] = GetInt4d($this->data, $pos);
 				$pos += 4;
 			}
+	$bbdBlocks += $blocksToRead;
+			if ($bbdBlocks < $this->numBigBlockDepotBlocks) {
+				$this->extensionBlock = GetInt4d($this->data, $pos);
+			}
+	}
 ?>
