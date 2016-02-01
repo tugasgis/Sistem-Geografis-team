@@ -488,4 +488,7 @@ class Spreadsheet_Excel_Reader {
 	function bgColor($row,$col,$sheet=0) {
 		return $this->xfProperty($row,$col,$sheet,'bgColor');
 	}
+	function borderLeft($row,$col,$sheet=0) {
+		return $this->xfProperty($row,$col,$sheet,'borderLeft');
+	}
 ?>
