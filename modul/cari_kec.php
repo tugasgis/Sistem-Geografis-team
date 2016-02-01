@@ -10,5 +10,6 @@ include("connect.php");?>
 <p><a href="view_perum_tim.php" target="_blank">Kecamatan Bogor Timur</a>  </p>
 <p><a href="view_perum_uta.php" target="_blank">Kecamatan Bogor Utara</a></p>
 <p><a href="view_perum_tns.php" target="_blank">Kecamatan Tanah Sareal</a></p>
+<p><a href="tambah_manual.html" target="_blank">Tambah Perumahan</a></p>
   </head>
   </html>
