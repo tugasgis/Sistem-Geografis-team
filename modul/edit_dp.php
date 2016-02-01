@@ -90,3 +90,10 @@ case "edit_dp":
 	<tr><td>Jumlah Kosong</td><td>     : <input type=text name='jumlah_kosong' size=30 value='$r[jumlah_kosong]'></td></tr>
 	<tr><td>Latitude</td><td>     : <input type=text name='lat' size=30 value='$r[lat]'></td></tr>
 	<tr><td>Longitude</td><td>     : <input type=text name='lng' size=30 value='$r[lng]'></td></tr>";
+echo "<tr><td colspan=2><input type=submit value=Update>
+                            <input type=button value=Batal onclick=self.history.back()></td></tr>
+          </table>
+		  </form>";
+    break;  
+}
+?>
