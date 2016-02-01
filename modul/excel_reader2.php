@@ -1542,4 +1542,74 @@ if ($richString){
 		if (!isset($this->sheets[$this->sn]['numCols']))
 			 $this->sheets[$this->sn]['numCols'] = $this->sheets[$this->sn]['maxcol'];
 		}
+		
+		function isDate($spos) {
+			$xfindex = ord($this->data[$spos+4]) | ord($this->data[$spos+5]) << 8;
+			return ($this->xfRecords[$xfindex]['type'] == 'date');
+		}
+
+		// Get the details for a particular cell
+		function _getCellDetails($spos,$numValue,$column) {
+			$xfindex = ord($this->data[$spos+4]) | ord($this->data[$spos+5]) << 8;
+			$xfrecord = $this->xfRecords[$xfindex];
+			$type = $xfrecord['type'];
+
+			$format = $xfrecord['format'];
+			$formatIndex = $xfrecord['formatIndex'];
+			$fontIndex = $xfrecord['fontIndex'];
+			$formatColor = "";
+			$rectype = '';
+			$string = '';
+			$raw = '';
+
+			if (isset($this->_columnsFormat[$column + 1])){
+				$format = $this->_columnsFormat[$column + 1];
+			}
+
+			if ($type == 'date') {
+				// See http://groups.google.com/group/php-excel-reader-discuss/browse_frm/thread/9c3f9790d12d8e10/f2045c2369ac79de
+				$rectype = 'date';
+				// Convert numeric value into a date
+				$utcDays = floor($numValue - ($this->nineteenFour ? SPREADSHEET_EXCEL_READER_UTCOFFSETDAYS1904 : SPREADSHEET_EXCEL_READER_UTCOFFSETDAYS));
+				$utcValue = ($utcDays) * SPREADSHEET_EXCEL_READER_MSINADAY;
+				$dateinfo = gmgetdate($utcValue);
+
+				$raw = $numValue;
+				$fractionalDay = $numValue - floor($numValue) + .0000001; // The .0000001 is to fix for php/excel fractional diffs
+
+				$totalseconds = floor(SPREADSHEET_EXCEL_READER_MSINADAY * $fractionalDay);
+				$secs = $totalseconds % 60;
+				$totalseconds -= $secs;
+				$hours = floor($totalseconds / (60 * 60));
+				$mins = floor($totalseconds / 60) % 60;
+				$string = date ($format, mktime($hours, $mins, $secs, $dateinfo["mon"], $dateinfo["mday"], $dateinfo["year"]));
+			} else if ($type == 'number') {
+				$rectype = 'number';
+				$formatted = $this->_format_value($format, $numValue, $formatIndex);
+				$string = $formatted['string'];
+				$formatColor = $formatted['formatColor'];
+				$raw = $numValue;
+			} else{
+				if ($format=="") {
+					$format = $this->_defaultFormat;
+				}
+				$rectype = 'unknown';
+				$formatted = $this->_format_value($format, $numValue, $formatIndex);
+				$string = $formatted['string'];
+				$formatColor = $formatted['formatColor'];
+				$raw = $numValue;
+			}
+
+			return array(
+				'string'=>$string,
+				'raw'=>$raw,
+				'rectype'=>$rectype,
+				'format'=>$format,
+				'formatIndex'=>$formatIndex,
+				'fontIndex'=>$fontIndex,
+				'formatColor'=>$formatColor,
+				'xfIndex'=>$xfindex
+			);
+
+		}
 ?>
