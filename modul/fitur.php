@@ -34,3 +34,5 @@
 </form>
       <p>&nbsp;</p>
     </div>
+</div>
+<div id="footer">
