@@ -2,7 +2,8 @@
 include("connect.php");?>
 <html>
 <head>
-  <title>Firmansyah Wahyudiarto & Lida Pratiwi Puteri - Telkom GIS</title>
-  
+  <title>Kelompok TB GIS</title>
+  <body>
+<p><a href="view_perum_barat.php" target="_blank">Kecamatan Bogor Barat</a></p>
   </head>
   </html>
