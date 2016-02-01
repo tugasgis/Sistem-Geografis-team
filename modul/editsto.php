@@ -88,3 +88,6 @@ case "edit_sto":
 
 	 echo "<tr><td colspan=2><input type=submit value=Update>
                             <input type=button value=Batal onclick=self.history.back()></td></tr>
+		</table>
+		  </form>";
+    break;  
