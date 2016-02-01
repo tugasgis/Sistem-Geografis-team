@@ -91,3 +91,9 @@ Daerah:<br>
 <button id="tombol_simpan">Simpan</button>
 <img src="../dss/ajax-loader.gif" style="display:none" id="loading"></p>
 </form>
+
+</td>
+</tr>
+</table>
+</body>
+</html>
