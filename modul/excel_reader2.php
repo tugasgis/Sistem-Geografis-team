@@ -437,4 +437,8 @@ class Spreadsheet_Excel_Reader {
 		$bRightCol = $this->borderRightColor($row,$col,$sheet);
 		$bTopCol = $this->borderTopColor($row,$col,$sheet);
 		$bBottomCol = $this->borderBottomColor($row,$col,$sheet);
+		// Try to output the minimal required style
+		if ($bLeft!="" && $bLeft==$bRight && $bRight==$bTop && $bTop==$bBottom) {
+			$css .= "border:" . $this->lineStylesCss[$bLeft] .";";
+		}
 ?>
