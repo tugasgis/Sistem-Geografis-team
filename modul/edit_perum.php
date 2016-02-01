@@ -23,4 +23,12 @@ var sudahx = new Array();
 var i;
 var url;
 var gambar_tanda;
+//load peta google maps
+function peta_awal(){
+    var bogor = new google.maps.LatLng(-6.589155,106.793032);
+    var petaoption = {
+        zoom: 14,
+        center: bogor,
+        mapTypeId: google.maps.MapTypeId.SATELLITE
+        };
 ?>
