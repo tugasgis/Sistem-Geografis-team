@@ -51,3 +51,10 @@ function peta_awal(){
     
   </tr>
 </table>
+<table border=0 width=1000>
+<tr><td>
+<div id="petaku" style="width:700px; height:500px"></div>
+</td>
+<td valign=top>
+<form method="post" action="coba.php">
+<p>
