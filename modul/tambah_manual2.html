@@ -13,3 +13,11 @@
 //var jenis = "home";
     var infowindow;
 	//var gambar_tanda;
+	
+	var baseIcon = new GIcon();
+	          baseIcon.iconSize=new GSize(32,32);
+	          baseIcon.shadowSize=new GSize(56,32);
+	          baseIcon.iconAnchor=new GPoint(16,32);
+	          baseIcon.infoWindowAnchor=new GPoint(16,0);
+	
+	var icon = new GIcon(baseIcon, "icon/home.png", null, null);
