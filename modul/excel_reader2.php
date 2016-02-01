@@ -592,4 +592,15 @@ class Spreadsheet_Excel_Reader {
 			if ($row_numbers) {
 				$out .= "\n\t\t<th>$row</th>";
 			}
+			for($col=1;$col<=$this->colcount($sheet);$col++) {
+				// Account for Rowspans/Colspans
+				$rowspan = $this->rowspan($row,$col,$sheet);
+				$colspan = $this->colspan($row,$col,$sheet);
+				for($i=0;$i<$rowspan;$i++) {
+					for($j=0;$j<$colspan;$j++) {
+						if ($i>0 || $j>0) {
+							$this->sheets[$sheet]['cellsInfo'][$row+$i][$col+$j]['dontprint']=1;
+						}
+					}
+				}
 ?>
