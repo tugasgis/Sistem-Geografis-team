@@ -69,3 +69,7 @@ echo "</table>";
     echo "<br /> <br />";
     echo "<div id=paging>Hal: $linkHalaman</div><br>";
     break;
+
+case "edit_sto":
+    $edit = mysql_query("SELECT * FROM sto WHERE id_sto='$_GET[id]'");
+    $r    = mysql_fetch_array($edit);
