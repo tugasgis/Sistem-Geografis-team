@@ -58,4 +58,7 @@ define('PROPERTY_STORAGE_BLOCK_SIZE', 0x80);
 define('BIG_BLOCK_DEPOT_BLOCKS_POS', 0x4c);
 define('SMALL_BLOCK_THRESHOLD', 0x1000);
 // property storage offsets
+define('SIZE_OF_NAME_POS', 0x40);
+define('TYPE_POS', 0x42);
+define('START_BLOCK_POS', 0x74);
 ?>
