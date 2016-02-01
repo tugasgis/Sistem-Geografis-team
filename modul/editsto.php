@@ -16,3 +16,25 @@ div id="main_content">
                     <ul class="menu">
                     </ul>
                 </div>
+	<div class="clear">
+          	<br>
+          	</div>
+    	<p>Silakan Edit Data STO Berikut ini :</p><br>
+    	<div id="tengah4">
+    		<?php
+    $aksi="aksi_sto.php";
+switch($_GET[act]){
+  // Tampilkan sto pd tabel
+  default:
+    echo "<table border=1>
+        <tr>
+	<th>No</th>
+	<th>Kode STO</th>
+	<th>Nama STO</th>
+	<th>Alamat</th>
+	<th>ID</th>
+	<th>Daerah</th>
+	<th>Latitude</th>
+	<th>Longitude</th>
+	<th>Aksi</th>
+	</tr>";
