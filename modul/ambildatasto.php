@@ -20,4 +20,6 @@ while($x = mysql_fetch_array($data)){
     "daerah":"'.$x['daerah'].'",
     "x":"'.$x['lat'].'",
     "y":"'.$x['lng'].'"
+    },';
+}
 ?>
