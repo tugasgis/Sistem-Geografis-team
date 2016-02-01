@@ -388,4 +388,7 @@ class Spreadsheet_Excel_Reader {
 	function rowheight($row,$sheet=0) {
 		return $this->rowInfo[$sheet][$row]['height'];
 	}
+	function rowhidden($row,$sheet=0) {
+		return !!$this->rowInfo[$sheet][$row]['hidden'];
+	}
 ?>
