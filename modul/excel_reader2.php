@@ -629,4 +629,10 @@ class Spreadsheet_Excel_Reader {
 	}
 	// --------------
 	// END PUBLIC API
+	var $boundsheets = array();
+	var $formatRecords = array();
+	var $fontRecords = array();
+	var $xfRecords = array();
+	var $colInfo = array();
+   	var $rowInfo = array();
 ?>
