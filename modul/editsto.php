@@ -95,3 +95,7 @@ case "edit_sto":
 ?>
 <br>
 <a href="../halaman_utama.php">Kembali</a>
+ </div>
+  </div>
+<div id="footer">
+		<div class="footer_links">
