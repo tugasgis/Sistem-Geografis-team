@@ -19,3 +19,5 @@ include("class_paging.php");
           <div class="clear">
           	<br>
           </div>
+<p>Silakan Edit Data DP Berikut ini :</p><br>
+    <div id="tengah">
