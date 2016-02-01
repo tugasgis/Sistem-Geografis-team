@@ -114,4 +114,7 @@ class OLERead {
 		$this->rootStartBlock = GetInt4d($this->data, ROOT_START_BLOCK_POS);
 		$this->extensionBlock = GetInt4d($this->data, EXTENSION_BLOCK_POS);
 		$this->numExtensionBlocks = GetInt4d($this->data, NUM_EXTENSION_BLOCK_POS);
+	$bigBlockDepotBlocks = array();
+		$pos = BIG_BLOCK_DEPOT_BLOCKS_POS;
+		$bbdBlocks = $this->numBigBlockDepotBlocks;
 ?>
