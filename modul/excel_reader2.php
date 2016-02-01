@@ -86,4 +86,8 @@ function array_comb($array1, $array2) {
 	}
 	return $out;
 }
+
+function v($data,$pos) {
+	return ord($data[$pos]) | ord($data[$pos+1])<<8;
+}
 ?>
