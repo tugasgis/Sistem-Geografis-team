@@ -826,4 +826,15 @@ class Spreadsheet_Excel_Reader {
 			$color = strtolower($matches[1]);
 			$pattern = preg_replace($color_regex,"",$pattern);
 		}
+		// In Excel formats, "_" is used to add spacing, which we can't do in HTML
+		$pattern = preg_replace("/_./","",$pattern);
+		
+		// Some non-number characters are escaped with \, which we don't need
+		$pattern = preg_replace("/\\\/","",$pattern);
+		
+		// Some non-number strings are quoted, so we'll get rid of the quotes
+		$pattern = preg_replace("/\"/","",$pattern);
+
+		// TEMPORARY - Convert # to 0
+		$pattern = preg_replace("/\#/","0",$pattern);
 ?>
