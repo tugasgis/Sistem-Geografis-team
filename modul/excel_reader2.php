@@ -403,4 +403,8 @@ class Spreadsheet_Excel_Reader {
 		if ($align!="") {
 			$css .= "text-align:$align;";
 		}
+		$height=$this->height($row,$col,$sheet);
+		if ($height!="") {
+			$css .= "font-size:$height"."px;";
+		}
 ?>
