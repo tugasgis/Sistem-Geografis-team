@@ -74,4 +74,11 @@ $(document).ready(function(){
     });
 });
 </script>
+<style>
+#jendelainfo{position:absolute;z-index:1000;top:100;
+left:400;background-color:yellow;display:none;}
+</style>
+</head>
+<body onLoad="peta_awal()">
+<center>
 ?>
