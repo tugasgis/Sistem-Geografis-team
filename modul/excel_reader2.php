@@ -365,4 +365,11 @@ class Spreadsheet_Excel_Reader {
 		if ($val=="") { return 1; }
 		return $val;
 	}
+	function hyperlink($row,$col,$sheet=0) {
+		$link = $this->sheets[$sheet]['cellsInfo'][$row][$col]['hyperlink'];
+		if ($link) {
+			return $link['link'];
+		}
+		return '';
+	}
 ?>
