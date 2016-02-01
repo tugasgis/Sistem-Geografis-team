@@ -372,4 +372,7 @@ class Spreadsheet_Excel_Reader {
 		}
 		return '';
 	}
+	function rowcount($sheet=0) {
+		return $this->sheets[$sheet]['numRows'];
+	}
 ?>
