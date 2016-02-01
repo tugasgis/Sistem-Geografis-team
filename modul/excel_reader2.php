@@ -447,4 +447,12 @@ class Spreadsheet_Excel_Reader {
 			if ($bTop!="") { $css .= "border-top:" . $this->lineStylesCss[$bTop] .";"; }
 			if ($bBottom!="") { $css .= "border-bottom:" . $this->lineStylesCss[$bBottom] .";"; }
 		}
+		// Only output border colors if there is an actual border specified
+		if ($bLeft!="" && $bLeftCol!="") { $css .= "border-left-color:" . $bLeftCol .";"; }
+		if ($bRight!="" && $bRightCol!="") { $css .= "border-right-color:" . $bRightCol .";"; }
+		if ($bTop!="" && $bTopCol!="") { $css .= "border-top-color:" . $bTopCol . ";"; }
+		if ($bBottom!="" && $bBottomCol!="") { $css .= "border-bottom-color:" . $bBottomCol .";"; }
+		
+		return $css;
+	}
 ?>
