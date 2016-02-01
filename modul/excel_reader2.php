@@ -608,5 +608,23 @@ class Spreadsheet_Excel_Reader {
 					if ($this->colhidden($col,$sheet)) {
 						$style .= "display:none;";
 					}
-					
+				$out .= "\n\t\t<td style=\"$style\"" . ($colspan > 1?" colspan=$colspan":"") . ($rowspan > 1?" rowspan=$rowspan":"") . ">";
+					$val = $this->val($row,$col,$sheet);
+					if ($val=='') { $val="&nbsp;"; }
+					else { 
+						$val = htmlentities($val); 
+						$link = $this->hyperlink($row,$col,$sheet);
+						if ($link!='') {
+							$val = "<a href=\"$link\">$val</a>";
+						}
+					}
+					$out .= "<nobr>".nl2br($val)."</nobr>";
+					$out .= "</td>";
+				}
+			}
+			$out .= "</tr>\n";
+		}
+		$out .= "</tbody></table>";
+		return $out;
+	}	
 ?>
