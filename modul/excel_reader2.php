@@ -637,4 +637,6 @@ class Spreadsheet_Excel_Reader {
    	var $rowInfo = array();
    	var $sst = array();
 	var $sheets = array();
+	var $data;
+	var $_ole;
 ?>
