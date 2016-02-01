@@ -897,5 +897,17 @@ class Spreadsheet_Excel_Reader {
 	function setOutputEncoding($encoding) {
 		$this->_defaultEncoding = $encoding;
 	}
-		
+	/**
+	 *  $encoder = 'iconv' or 'mb'
+	 *  set iconv if you would like use 'iconv' for encode UTF-16LE to your encoding
+	 *  set mb if you would like use 'mb_convert_encoding' for encode UTF-16LE to your encoding
+	 */
+	function setUTFEncoder($encoder = 'iconv') {
+		$this->_encoderFunction = '';
+		if ($encoder == 'iconv') {
+			$this->_encoderFunction = function_exists('iconv') ? 'iconv' : '';
+		} elseif ($encoder == 'mb') {
+			$this->_encoderFunction = function_exists('mb_convert_encoding') ? 'mb_convert_encoding' : '';
+		}
+	}	
 ?>
