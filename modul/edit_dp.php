@@ -45,3 +45,7 @@ $batas  = 10;
 $posisi = $p->cariPosisi($batas);
 
 $tampil=mysql_query("SELECT * FROM dp ORDER BY id_dp DESC LIMIT $posisi,$batas");
+
+$no = $posisi+1;
+    while ($r=mysql_fetch_array($tampil)){
+      echo "
