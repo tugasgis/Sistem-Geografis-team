@@ -101,4 +101,9 @@ left:400;background-color:yellow;display:none;}
     <td><td width="300" bgcolor="#FFCC00" height="19" valign="top" colspan="2"><p align="center">Sudah Dibangun :<span id="tekssudah"></span></td>
   </tr>
 </table>
+
+<?php 
+if (!(isset($tes))) { ?>
+<table width="1024px" border="0" align="center" >
+<?php } ?>
 ?>
