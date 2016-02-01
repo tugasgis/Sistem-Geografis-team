@@ -54,4 +54,8 @@ define('BIG_BLOCK_SIZE', 0x200);
 define('SMALL_BLOCK_SIZE', 0x40);
 define('EXTENSION_BLOCK_POS', 0x44);
 define('NUM_EXTENSION_BLOCK_POS', 0x48);
+define('PROPERTY_STORAGE_BLOCK_SIZE', 0x80);
+define('BIG_BLOCK_DEPOT_BLOCKS_POS', 0x4c);
+define('SMALL_BLOCK_THRESHOLD', 0x1000);
+// property storage offsets
 ?>
