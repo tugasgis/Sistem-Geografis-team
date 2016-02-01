@@ -407,4 +407,9 @@ class Spreadsheet_Excel_Reader {
 		if ($height!="") {
 			$css .= "font-size:$height"."px;";
 		}
+		$bgcolor=$this->bgColor($row,$col,$sheet);
+		if ($bgcolor!="") {
+			$bgcolor = $this->colors[$bgcolor];
+			$css .= "background-color:$bgcolor;";
+		}
 ?>
