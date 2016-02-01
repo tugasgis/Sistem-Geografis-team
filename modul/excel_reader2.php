@@ -763,4 +763,20 @@ class Spreadsheet_Excel_Reader {
 
         0x7FFF => "#000000"
     );
+    var $lineStyles = array(
+		0x00 => "",
+		0x01 => "Thin",
+		0x02 => "Medium",
+		0x03 => "Dashed",
+		0x04 => "Dotted",
+		0x05 => "Thick",
+		0x06 => "Double",
+		0x07 => "Hair",
+		0x08 => "Medium dashed",
+		0x09 => "Thin dash-dotted",
+		0x0A => "Medium dash-dotted",
+		0x0B => "Thin dash-dot-dotted",
+		0x0C => "Medium dash-dot-dotted",
+		0x0D => "Slanted medium dash-dotted"
+	);	
 ?>
