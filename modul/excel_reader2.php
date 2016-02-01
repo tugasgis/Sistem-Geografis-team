@@ -482,4 +482,7 @@ class Spreadsheet_Excel_Reader {
 		}
 		return "";
 	}
+	function align($row,$col,$sheet=0) {
+		return $this->xfProperty($row,$col,$sheet,'align');
+	}
 ?>
