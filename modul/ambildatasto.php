@@ -11,4 +11,6 @@ $data = mysql_query($query);
 $json = '{"wilayah": {';
 $json .= '"petak":[ ';
 while($x = mysql_fetch_array($data)){
+    $json .= '{';
+    $json .= '"id_sto":"'.$x['id_sto'].'",
 ?>
