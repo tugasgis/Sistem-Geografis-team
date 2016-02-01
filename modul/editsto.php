@@ -73,3 +73,7 @@ echo "</table>";
 case "edit_sto":
     $edit = mysql_query("SELECT * FROM sto WHERE id_sto='$_GET[id]'");
     $r    = mysql_fetch_array($edit);
+
+ 	echo "<h2>Edit Data STO</h2>
+          <form method=POST action=$aksi?jenis=sto&act=edit_sto>
+          <input type=hidden name=id value=$r[id_sto]>
