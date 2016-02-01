@@ -18,3 +18,20 @@ var sudahx = new Array();
 var i;
 var url;
 var gambar_tanda;
+
+function peta_awal(){
+    var bogor = new google.maps.LatLng(-6.589155,106.793032);
+    var petaoption = {
+        zoom: 14,
+        center: bogor,
+        mapTypeId: google.maps.MapTypeId.SATELLITE
+        };
+    peta = new google.maps.Map(document.getElementById("petaku"),petaoption);
+    google.maps.event.addListener(peta,'click',function(event){
+        kasihtanda(event.latLng);
+    };
+    ambildatabase('awal');
+}
+</script>
+
+</head>
