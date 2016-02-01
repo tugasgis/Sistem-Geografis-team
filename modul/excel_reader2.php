@@ -349,4 +349,7 @@ class Spreadsheet_Excel_Reader {
 		}
 		return "";
 	}
+	function type($row,$col,$sheet=0) {
+		return $this->info($row,$col,'type',$sheet);
+	}
 ?>
