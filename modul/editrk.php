@@ -18,3 +18,11 @@ include("class_paging.php");
           <div class="clear">
           	<br>
           </div>
+<p>Silakan Edit Data Rumah Kabel Berikut ini :</p><br>
+    <div id="tengah4">
+    <?php
+    $aksi="aksi_rk.php";
+switch($_GET[act]){
+  // Tampilkan RK pd tabel
+  default:
+    echo "<table border=1>
