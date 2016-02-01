@@ -86,3 +86,7 @@ case "edit_rk":
     break;  
 }
 ?>
+<br>
+<a href="../halaman_utama.php">Kembali</a>
+    </div>
+  </div>
