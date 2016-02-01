@@ -67,4 +67,10 @@
         });
     });
     }
-	
+    function saveData() {
+      var nama_perum = escape(document.getElementById("nama_perum").value);
+	  var alamat = escape(document.getElementById("alamat").value);
+	  var id = document.getElementById("id").value;
+      var jumlah_dibangun = escape(document.getElementById("jumlah_dibangun").value);
+	  var sudah_dibangun = escape(document.getElementById("sudah_dibangun").value);
+	  var latlng = marker.getPosition ();
