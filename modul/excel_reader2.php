@@ -294,4 +294,15 @@ define('SPREADSHEET_EXCEL_READER_TYPE_COLINFO',	     0x7d);
 define('SPREADSHEET_EXCEL_READER_TYPE_DEFCOLWIDTH',  0x55);
 define('SPREADSHEET_EXCEL_READER_TYPE_STANDARDWIDTH', 0x99);
 define('SPREADSHEET_EXCEL_READER_DEF_NUM_FORMAT',	"%s");
+
+/*
+* Main Class
+*/
+class Spreadsheet_Excel_Reader {
+
+	// MK: Added to make data retrieval easier
+	var $colnames = array();
+	var $colindexes = array();
+	var $standardColWidth = 0;
+	var $defaultColWidth = 0;
 ?>
