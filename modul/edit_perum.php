@@ -122,4 +122,13 @@ Nama :<br>
 <input name="nama" type="text" id="nama" value="<?php echo $nama; ?>"><p>
 Alamat :<br>
 <textarea cols=20 rows=8 id="alamat" value="<?php echo $alamat; ?>"></textarea><p>
+<button id="tombol_simpan">Update</button>
+<img src="../dss/ajax-loader.gif" style="display:none" id="loading">
+</td>
+
+
+</tr>
+  </table>
+</body>
+</html>
 ?>
