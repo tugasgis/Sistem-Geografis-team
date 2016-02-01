@@ -19,3 +19,5 @@
     <div id="tengah">
  <p>Berikut ini adalah fitur-fitur utama yang ada pada aplikasi ini:</p>
       <ul>
+<li>Pemetaan secara Realtime menggunakan teknologi Google Maps</li>
+        <li>Menggunakan teknologi Jquery, PHP, dan MySQL</li>
