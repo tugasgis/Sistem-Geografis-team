@@ -542,4 +542,10 @@ class Spreadsheet_Excel_Reader {
 		$ci = $this->fontProperty($row,$col,$sheet,'color');
                 return $this->rawColor($ci);
         }
+        function rawColor($ci) {
+		if (($ci <> 0x7FFF) && ($ci <> '')) {
+			return $this->colors[$ci];
+		}
+		return "";
+	}
 ?>
