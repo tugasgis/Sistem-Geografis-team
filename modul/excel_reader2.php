@@ -128,4 +128,9 @@ class OLERead {
 	for ($j = 0; $j < $this->numExtensionBlocks; $j++) {
 			$pos = ($this->extensionBlock + 1) * BIG_BLOCK_SIZE;
 			$blocksToRead = min($this->numBigBlockDepotBlocks - $bbdBlocks, BIG_BLOCK_SIZE / 4 - 1);
+			
+	for ($i = $bbdBlocks; $i < $bbdBlocks + $blocksToRead; $i++) {
+				$bigBlockDepotBlocks[$i] = GetInt4d($this->data, $pos);
+				$pos += 4;
+			}
 ?>
