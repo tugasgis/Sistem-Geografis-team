@@ -55,4 +55,16 @@ $(document).ready(function(){
             data: "x="+x+"&y="+y+"&nama="+nama+"&alamat="+alamat+"&kec="+kec+"&daerah="+daerah+"&jumlah="+jumlah+"&sudah="+sudah,
             cache: false,
             success: function(msg){
+            	alert(msg);
+                $("#loading").hide();
+                $("#x").val("");
+                $("#y").val("");
+                $("#nama").val("");
+		$("#alamat").val("");
+		$("#kec").val("");
+                $("#daerah").val("");
+                $("#jumlah").val("");
+                $("#sudah").val("");
+                ambildatabase('akhir');
+            }
 ?>
