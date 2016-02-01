@@ -41,3 +41,19 @@ $p      = new Paging;
     $posisi = $p->cariPosisi($batas);
 
     $tampil=mysql_query("SELECT * FROM rk ORDER BY id_rk DESC LIMIT $posisi,$batas");
+    
+    $no = $posisi+1;
+    while ($r=mysql_fetch_array($tampil)){
+      echo "
+	  			<tr align=center>
+				<td>$no</td>
+                <td width=70>$r[nama_rk]</td>
+                <td width=90>$r[alamat]</td>
+                <td width=40>$r[id_sto]</td>
+				<td>$r[lat]</td>
+				<td>$r[lng]</td>
+                <td><a href=?jenis=rk&act=edit_rk&id=$r[id_rk]>Edit</a> | 
+	                  <a href=$aksi?jenis=rk&act=hapus&id=$r[id_rk]>Hapus</a>
+		        </tr>";
+      $no++;
+    }
