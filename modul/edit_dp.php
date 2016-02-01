@@ -21,3 +21,9 @@ include("class_paging.php");
           </div>
 <p>Silakan Edit Data DP Berikut ini :</p><br>
     <div id="tengah">
+    <?php
+    $aksi="aksi_semua.php";
+switch($_GET[act]){
+  // Tampilkan DP pd tabel
+  default:
+    echo "<table border=1>
