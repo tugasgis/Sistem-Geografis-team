@@ -24,3 +24,5 @@
 	<li>Tampilan yang menarik dan user friendly</li>
 	<li>Editing data secara realtime dan interaktif</li>
         <li>Terdapat fungsi-fungsi updating dan edit data secara mudah</li>
+        <li>Terdapat fungsi ekspor dan impor data dari dan ke MySQL ke dalam format Microsoft Excel</li>
+        <li>Petunjuk penggunaan</li>
