@@ -189,4 +189,7 @@ class OLERead {
 		}
 		return $data;
 	 }
+	 
+	 function __readPropertySets(){
+		$offset = 0;
 ?>
