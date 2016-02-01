@@ -485,4 +485,7 @@ class Spreadsheet_Excel_Reader {
 	function align($row,$col,$sheet=0) {
 		return $this->xfProperty($row,$col,$sheet,'align');
 	}
+	function bgColor($row,$col,$sheet=0) {
+		return $this->xfProperty($row,$col,$sheet,'bgColor');
+	}
 ?>
