@@ -106,4 +106,11 @@ left:400;background-color:yellow;display:none;}
 if (!(isset($tes))) { ?>
 <table width="1024px" border="0" align="center" >
 <?php } ?>
+<div align="center">
+  <table width="570" height="131" border="0" cellpadding="2" cellspacing="1" align="center">
+     <tr>
+      <td><fieldset>
+      <legend><strong>Perumahan</strong></legend>
+      <table>
+<tr>
 ?>
