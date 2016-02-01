@@ -635,4 +635,6 @@ class Spreadsheet_Excel_Reader {
 	var $xfRecords = array();
 	var $colInfo = array();
    	var $rowInfo = array();
+   	var $sst = array();
+	var $sheets = array();
 ?>
