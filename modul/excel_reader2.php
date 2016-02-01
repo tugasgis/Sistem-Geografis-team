@@ -235,4 +235,8 @@ class OLERead {
 			if ($this->props[$this->wrkbook]['size'] % BIG_BLOCK_SIZE != 0) {
 				$numBlocks++;
 			}
+		if ($numBlocks == 0) return '';
+			$streamData = '';
+			$block = $this->props[$this->wrkbook]['startBlock'];
+			$pos = 0;
 ?>
