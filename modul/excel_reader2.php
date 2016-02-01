@@ -794,4 +794,9 @@ class Spreadsheet_Excel_Reader {
 		"Medium dash-dot-dotted" => "2px dashed", 
 		"Slanted medium dash-dotte" => "2px dashed" 
 	);
+	function read16bitstring($data, $start) {
+		$len = 0;
+		while (ord($data[$start + $len]) + ord($data[$start + $len + 1]) > 0) $len++;
+		return substr($data, $start, $len);
+	}
 ?>
