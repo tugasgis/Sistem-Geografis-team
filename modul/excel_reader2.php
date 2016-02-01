@@ -199,4 +199,7 @@ class OLERead {
 			$startBlock = GetInt4d($d, START_BLOCK_POS);
 			$size = GetInt4d($d, SIZE_POS);
 			$name = '';
+			for ($i = 0; $i < $nameSize ; $i++) {
+				$name .= $d[$i];
+			}
 ?>
