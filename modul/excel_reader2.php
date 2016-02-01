@@ -420,4 +420,8 @@ class Spreadsheet_Excel_Reader {
 		if ($bold) {
 			$css .= "font-weight:bold;";
 		}
+		$italic=$this->italic($row,$col,$sheet);
+		if ($italic) {
+			$css .= "font-style:italic;";
+		}
 ?>
