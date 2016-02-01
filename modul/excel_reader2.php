@@ -192,4 +192,11 @@ class OLERead {
 	 
 	 function __readPropertySets(){
 		$offset = 0;
+		while ($offset < strlen($this->entry)) {
+			$d = substr($this->entry, $offset, PROPERTY_STORAGE_BLOCK_SIZE);
+			$nameSize = ord($d[SIZE_OF_NAME_POS]) | (ord($d[SIZE_OF_NAME_POS+1]) << 8);
+			$type = ord($d[TYPE_POS]);
+			$startBlock = GetInt4d($d, START_BLOCK_POS);
+			$size = GetInt4d($d, SIZE_POS);
+			$name = '';
 ?>
