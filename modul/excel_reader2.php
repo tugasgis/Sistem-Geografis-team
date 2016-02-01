@@ -806,4 +806,12 @@ class Spreadsheet_Excel_Reader {
 		if ( (!$f && $format=="%s") || ($f==49) || ($format=="GENERAL") ) { 
 			return array('string'=>$num, 'formatColor'=>null); 
 		}
+		// Custom pattern can be POSITIVE;NEGATIVE;ZERO
+		// The "text" option as 4th parameter is not handled
+		$parts = split(";",$format);
+		$pattern = $parts[0];
+		// Negative pattern
+		if (count($parts)>2 && $num==0) {
+			$pattern = $parts[2];
+		}
 ?>
