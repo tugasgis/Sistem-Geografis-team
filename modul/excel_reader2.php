@@ -460,4 +460,7 @@ class Spreadsheet_Excel_Reader {
 	function format($row,$col,$sheet=0) {
 		return $this->info($row,$col,'format',$sheet);
 	}
+	function formatIndex($row,$col,$sheet=0) {
+		return $this->info($row,$col,'formatIndex',$sheet);
+	}
 ?>
