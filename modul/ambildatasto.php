@@ -16,4 +16,6 @@ while($x = mysql_fetch_array($data)){
     "kode":"'.htmlspecialchars($x['kode_sto']).'",
     "nama":"'.htmlspecialchars($x['nama_sto']).'",
     "alamat":"'.htmlspecialchars($x['alamat']).'",
+    "kec":"'.$x['id'].'",
+	"daerah":"'.$x['daerah'].'",
 ?>
