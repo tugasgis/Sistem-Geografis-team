@@ -31,3 +31,6 @@
 <label>
           <input type="submit" name="button" id="button" value="Back to Main Menu">
         </label>
+</form>
+      <p>&nbsp;</p>
+    </div>
