@@ -22,4 +22,8 @@ elseif ($jenis=='sto' AND $act=='edit_sto'){
 								   WHERE id_sto     = '$_POST[id]'");
 	header('location:editsto.php');
 }
+<<<<<<< HEAD
 ?>
+=======
+?>
+>>>>>>> 0e02d285bdeb931535aeaa08d4b7bafe7c2b17bc

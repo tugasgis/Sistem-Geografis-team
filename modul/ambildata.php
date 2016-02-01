@@ -27,5 +27,8 @@ $json .= ']';
 
 $json .= '}}';
 echo $json;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0e02d285bdeb931535aeaa08d4b7bafe7c2b17bc
 ?>

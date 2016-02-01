@@ -7,7 +7,10 @@ include("class_paging.php");
 <link rel="stylesheet" type="text/css" href="style_edit2.css" />
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 <script type="text/javascript" src="jquery-1.4.3.min.js"></script>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0e02d285bdeb931535aeaa08d4b7bafe7c2b17bc
 <div id="main_content">
 		<div id="top_banner"></div>
         
@@ -19,13 +22,18 @@ include("class_paging.php");
           <div class="clear">
           	<br>
           </div>
+<<<<<<< HEAD
     <p>Silakan Edit Data Rumah Kabel Berikut ini :</p><br>
+=======
+<p>Silakan Edit Data Rumah Kabel Berikut ini :</p><br>
+>>>>>>> 0e02d285bdeb931535aeaa08d4b7bafe7c2b17bc
     <div id="tengah4">
     <?php
     $aksi="aksi_rk.php";
 switch($_GET[act]){
   // Tampilkan RK pd tabel
   default:
+<<<<<<< HEAD
     echo "<table border=1>
           <tr>
 		  <th>No</th>
@@ -38,10 +46,25 @@ switch($_GET[act]){
 		  </tr>";
 
     $p      = new Paging;
+=======
+  echo "<table border=1>
+  	<tr>
+	<th>No</th>
+	<th>Nama RK</th>
+	<th>Alamat</th>
+	<th>ID STO</th>
+	<th>Latitude</th>
+	<th>Longitude</th>
+	<th>Aksi</th>
+	</tr>";
+
+$p      = new Paging;
+>>>>>>> 0e02d285bdeb931535aeaa08d4b7bafe7c2b17bc
     $batas  = 10;
     $posisi = $p->cariPosisi($batas);
 
     $tampil=mysql_query("SELECT * FROM rk ORDER BY id_rk DESC LIMIT $posisi,$batas");
+<<<<<<< HEAD
 
     $no = $posisi+1;
     while ($r=mysql_fetch_array($tampil)){
@@ -53,6 +76,19 @@ switch($_GET[act]){
                 <td width=40>$r[id_sto]</td>
 				<td>$r[lat]</td>
 				<td>$r[lng]</td>
+=======
+    
+    $no = $posisi+1;
+    while ($r=mysql_fetch_array($tampil)){
+      echo "
+	  	<tr align=center>
+		<td>$no</td>
+                <td width=70>$r[nama_rk]</td>
+                <td width=90>$r[alamat]</td>
+                <td width=40>$r[id_sto]</td>
+		<td>$r[lat]</td>
+		<td>$r[lng]</td>
+>>>>>>> 0e02d285bdeb931535aeaa08d4b7bafe7c2b17bc
                 <td><a href=?jenis=rk&act=edit_rk&id=$r[id_rk]>Edit</a> | 
 	                  <a href=$aksi?jenis=rk&act=hapus&id=$r[id_rk]>Hapus</a>
 		        </tr>";
@@ -65,6 +101,7 @@ switch($_GET[act]){
 	echo "<br /> <br />";
     echo "<div id=paging>Hal: $linkHalaman</div><br>";
     break;
+<<<<<<< HEAD
   
   case "edit_rk":
     $edit = mysql_query("SELECT * FROM rk WHERE id_rk='$_GET[id]'");
@@ -84,6 +121,27 @@ switch($_GET[act]){
                             <input type=button value=Batal onclick=self.history.back()></td></tr>
           </table>
 		  </form>";
+=======
+    
+case "edit_rk":
+    $edit = mysql_query("SELECT * FROM rk WHERE id_rk='$_GET[id]'");
+    $r    = mysql_fetch_array($edit);
+    
+    echo "<h2>Edit Data RK</h2>
+        <form method=POST action=$aksi?jenis=rk&act=edit_rk>
+        <input type=hidden name=id value=$r[id_rk]>
+        <table>
+        <tr><td>Nama rk</td><td>     : <input type=text name='nama_rk' size=30 value='$r[nama_rk]'></td></tr>
+        <tr><td>Alamat</td><td>  : <input type=text name='alamat' size=30 value='$r[alamat]'></td></tr>
+        <tr><td>ID STO</td><td>     : <input type=text name='id_sto' size=30 value='$r[id_sto]'></td></tr>
+	<tr><td>Latitude</td><td>     : <input type=text name='lat' size=30 value='$r[lat]'></td></tr>
+	<tr><td>Longitude</td><td>     : <input type=text name='lng' size=30 value='$r[lng]'></td></tr>";
+
+ echo "<tr><td colspan=2><input type=submit value=Update>
+                            <input type=button value=Batal onclick=self.history.back()></td></tr>
+        </table>
+	</form>";
+>>>>>>> 0e02d285bdeb931535aeaa08d4b7bafe7c2b17bc
     break;  
 }
 ?>
@@ -104,4 +162,8 @@ switch($_GET[act]){
 </div>
 
 </body>
+<<<<<<< HEAD
 </html>
+=======
+</html>
+>>>>>>> 0e02d285bdeb931535aeaa08d4b7bafe7c2b17bc

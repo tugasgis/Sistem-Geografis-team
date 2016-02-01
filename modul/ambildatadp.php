@@ -27,7 +27,10 @@ while($x = mysql_fetch_array($data)){
 }
 $json = substr($json,0,strlen($json)-1);
 $json .= ']';
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0e02d285bdeb931535aeaa08d4b7bafe7c2b17bc
 $json .= '}}';
 echo $json;
 

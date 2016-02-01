@@ -3,8 +3,12 @@ $nama=$_SESSION['teksnama'];
 $alamat=$_SESSION['teksalamat'];
 $kec=$_SESSION['tekskec'];  
 $jumlah=$_SESSION['teksjumlah']; 
+<<<<<<< HEAD
 $sudah=$_SESSION['tekssudah'];  
 ?>
+=======
+$sudah=$_SESSION['tekssudah'];
+>>>>>>> 0e02d285bdeb931535aeaa08d4b7bafe7c2b17bc
 
 <html>
 <title>Firmansyah Wahyudiarto & Lida Pratiwi Puteri - GIS</title>
@@ -49,21 +53,35 @@ $(document).ready(function(){
 		var daerah = $("#daerah").val();
 		var jumlah = $("#jumlah").val();
 		var sudah = $("#sudah").val();
+<<<<<<< HEAD
 		
 		
         $("#loading").show();
+=======
+	
+	$("#loading").show();
+>>>>>>> 0e02d285bdeb931535aeaa08d4b7bafe7c2b17bc
         $.ajax({
             url: "simpanperum.php",
             data: "x="+x+"&y="+y+"&nama="+nama+"&alamat="+alamat+"&kec="+kec+"&daerah="+daerah+"&jumlah="+jumlah+"&sudah="+sudah,
             cache: false,
             success: function(msg){
+<<<<<<< HEAD
                 alert(msg);
+=======
+            	alert(msg);
+>>>>>>> 0e02d285bdeb931535aeaa08d4b7bafe7c2b17bc
                 $("#loading").hide();
                 $("#x").val("");
                 $("#y").val("");
                 $("#nama").val("");
+<<<<<<< HEAD
 				$("#alamat").val("");
 				$("#kec").val("");
+=======
+		$("#alamat").val("");
+		$("#kec").val("");
+>>>>>>> 0e02d285bdeb931535aeaa08d4b7bafe7c2b17bc
                 $("#daerah").val("");
                 $("#jumlah").val("");
                 $("#sudah").val("");
@@ -124,6 +142,7 @@ Nama :<br>
 <input name="nama" type="text" id="nama" value="<?php echo $nama; ?>"><p>
 Alamat :<br>
 <textarea cols=20 rows=8 id="alamat" value="<?php echo $alamat; ?>"></textarea><p>
+<<<<<<< HEAD
 Kecamatan:<br>
 <select id='kec'>
 <option value='1' SELECTED>Bogor Barat</option>
@@ -140,6 +159,8 @@ Daerah:<br>
       <input type=text id="sudah" size=30 value="<?php echo $sudah; ?>">
     
   <p>
+=======
+>>>>>>> 0e02d285bdeb931535aeaa08d4b7bafe7c2b17bc
 <button id="tombol_simpan">Update</button>
 <img src="../dss/ajax-loader.gif" style="display:none" id="loading">
 </td>
@@ -149,3 +170,7 @@ Daerah:<br>
   </table>
 </body>
 </html>
+<<<<<<< HEAD
+=======
+?>
+>>>>>>> 0e02d285bdeb931535aeaa08d4b7bafe7c2b17bc

@@ -50,4 +50,8 @@ echo "Jumlah data yang gagal diimport : ".$gagal." <br>";
 //kembali ke form yang lalu
 echo "<meta http-equiv='refresh' content='1; url=halaman_utama.php'>";
 
+<<<<<<< HEAD
 ?>
+=======
+?>
+>>>>>>> 0e02d285bdeb931535aeaa08d4b7bafe7c2b17bc

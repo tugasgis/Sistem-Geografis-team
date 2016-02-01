@@ -72,4 +72,8 @@ function MM_swapImage() { //v3.0
   </table>
 </div>
 </body>
+<<<<<<< HEAD
 </html>
+=======
+</html>
+>>>>>>> 0e02d285bdeb931535aeaa08d4b7bafe7c2b17bc

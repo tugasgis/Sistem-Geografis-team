@@ -13,6 +13,7 @@ $json .= '"petak":[ ';
 while($x = mysql_fetch_array($data)){
     $json .= '{';
     $json .= '"id_sto":"'.$x['id_sto'].'",
+<<<<<<< HEAD
         "kode":"'.htmlspecialchars($x['kode_sto']).'",
 		"nama":"'.htmlspecialchars($x['nama_sto']).'",
         "alamat":"'.htmlspecialchars($x['alamat']).'",
@@ -22,10 +23,25 @@ while($x = mysql_fetch_array($data)){
         "y":"'.$x['lng'].'"
     },';
 }
+=======
+    "kode":"'.htmlspecialchars($x['kode_sto']).'",
+    "nama":"'.htmlspecialchars($x['nama_sto']).'",
+    "alamat":"'.htmlspecialchars($x['alamat']).'",
+    "kec":"'.$x['id'].'",
+    "daerah":"'.$x['daerah'].'",
+    "x":"'.$x['lat'].'",
+    "y":"'.$x['lng'].'"
+    },';
+}
+
+>>>>>>> 0e02d285bdeb931535aeaa08d4b7bafe7c2b17bc
 $json = substr($json,0,strlen($json)-1);
 $json .= ']';
 
 $json .= '}}';
 echo $json;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0e02d285bdeb931535aeaa08d4b7bafe7c2b17bc
 ?>

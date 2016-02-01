@@ -33,4 +33,8 @@ else {
 	echo "<meta http-equiv='refresh' content='1; url=index.php'>";
 }
 ?>
+<<<<<<< HEAD
 	<br /><center><img width="70" src="../websipo/images/loading.gif"></center>
+=======
+	<br /><center><img width="70" src="../websipo/images/loading.gif"></center>
+>>>>>>> 0e02d285bdeb931535aeaa08d4b7bafe7c2b17bc

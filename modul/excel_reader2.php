@@ -46,8 +46,13 @@
  * @see		OLE, Spreadsheet_Excel_Writer
  * --------------------------------------------------------------------------
  */
+<<<<<<< HEAD
 
 define('NUM_BIG_BLOCK_DEPOT_BLOCKS_POS', 0x2c);
+=======
+ 
+ define('NUM_BIG_BLOCK_DEPOT_BLOCKS_POS', 0x2c);
+>>>>>>> 0e02d285bdeb931535aeaa08d4b7bafe7c2b17bc
 define('SMALL_BLOCK_DEPOT_BLOCK_POS', 0x3c);
 define('ROOT_START_BLOCK_POS', 0x30);
 define('BIG_BLOCK_SIZE', 0x200);
@@ -64,7 +69,10 @@ define('START_BLOCK_POS', 0x74);
 define('SIZE_POS', 0x78);
 define('IDENTIFIER_OLE', pack("CCCCCCCC",0xd0,0xcf,0x11,0xe0,0xa1,0xb1,0x1a,0xe1));
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0e02d285bdeb931535aeaa08d4b7bafe7c2b17bc
 function GetInt4d($data, $pos) {
 	$value = ord($data[$pos]) | (ord($data[$pos+1])	<< 8) | (ord($data[$pos+2]) << 16) | (ord($data[$pos+3]) << 24);
 	if ($value>=4294967294) {
@@ -78,8 +86,13 @@ function gmgetdate($ts = null){
 	$k = array('seconds','minutes','hours','mday','wday','mon','year','yday','weekday','month',0);
 	return(array_comb($k,split(":",gmdate('s:i:G:j:w:n:Y:z:l:F:U',is_null($ts)?time():$ts))));
 	} 
+<<<<<<< HEAD
 
 // Added for PHP4 compatibility
+=======
+	
+	// Added for PHP4 compatibility
+>>>>>>> 0e02d285bdeb931535aeaa08d4b7bafe7c2b17bc
 function array_comb($array1, $array2) {
 	$out = array();
 	foreach ($array1 as $key => $value) {
@@ -95,7 +108,10 @@ function v($data,$pos) {
 class OLERead {
 	var $data = '';
 	function OLERead(){	}
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0e02d285bdeb931535aeaa08d4b7bafe7c2b17bc
 	function read($sFileName){
 		// check if file exist and is readable (Darko Miljanovic)
 		if(!is_readable($sFileName)) {
@@ -111,11 +127,16 @@ class OLERead {
 			$this->error = 1;
 			return false;
    		}
+<<<<<<< HEAD
 		$this->numBigBlockDepotBlocks = GetInt4d($this->data, NUM_BIG_BLOCK_DEPOT_BLOCKS_POS);
+=======
+   	$this->numBigBlockDepotBlocks = GetInt4d($this->data, NUM_BIG_BLOCK_DEPOT_BLOCKS_POS);
+>>>>>>> 0e02d285bdeb931535aeaa08d4b7bafe7c2b17bc
 		$this->sbdStartBlock = GetInt4d($this->data, SMALL_BLOCK_DEPOT_BLOCK_POS);
 		$this->rootStartBlock = GetInt4d($this->data, ROOT_START_BLOCK_POS);
 		$this->extensionBlock = GetInt4d($this->data, EXTENSION_BLOCK_POS);
 		$this->numExtensionBlocks = GetInt4d($this->data, NUM_EXTENSION_BLOCK_POS);
+<<<<<<< HEAD
 
 		$bigBlockDepotBlocks = array();
 		$pos = BIG_BLOCK_DEPOT_BLOCKS_POS;
@@ -140,10 +161,39 @@ class OLERead {
 			}
 
 			$bbdBlocks += $blocksToRead;
+=======
+	$bigBlockDepotBlocks = array();
+		$pos = BIG_BLOCK_DEPOT_BLOCKS_POS;
+		$bbdBlocks = $this->numBigBlockDepotBlocks;
+		
+	if ($this->numExtensionBlocks != 0) {
+			$bbdBlocks = (BIG_BLOCK_SIZE - BIG_BLOCK_DEPOT_BLOCKS_POS)/4;
+		}
+	for ($i = 0; $i < $bbdBlocks; $i++) {
+			$bigBlockDepotBlocks[$i] = GetInt4d($this->data, $pos);
+			$pos += 4;
+		}
+	for ($j = 0; $j < $this->numExtensionBlocks; $j++) {
+			$pos = ($this->extensionBlock + 1) * BIG_BLOCK_SIZE;
+			$blocksToRead = min($this->numBigBlockDepotBlocks - $bbdBlocks, BIG_BLOCK_SIZE / 4 - 1);
+			
+	for ($i = $bbdBlocks; $i < $bbdBlocks + $blocksToRead; $i++) {
+				$bigBlockDepotBlocks[$i] = GetInt4d($this->data, $pos);
+				$pos += 4;
+			}
+	$bbdBlocks += $blocksToRead;
+			if ($bbdBlocks < $this->numBigBlockDepotBlocks) {
+				$this->extensionBlock = GetInt4d($this->data, $pos);
+			}
+	}
+	
+	$bbdBlocks += $blocksToRead;
+>>>>>>> 0e02d285bdeb931535aeaa08d4b7bafe7c2b17bc
 			if ($bbdBlocks < $this->numBigBlockDepotBlocks) {
 				$this->extensionBlock = GetInt4d($this->data, $pos);
 			}
 		}
+<<<<<<< HEAD
 
 		// readBigBlockDepot
 		$pos = 0;
@@ -154,36 +204,64 @@ class OLERead {
 			$pos = ($bigBlockDepotBlocks[$i] + 1) * BIG_BLOCK_SIZE;
 			//echo "pos = $pos";
 			for ($j = 0 ; $j < BIG_BLOCK_SIZE / 4; $j++) {
+=======
+	
+	// readBigBlockDepot
+		$pos = 0;
+		$index = 0;
+		$this->bigBlockChain = array();
+	for ($i = 0; $i < $this->numBigBlockDepotBlocks; $i++) {
+			$pos = ($bigBlockDepotBlocks[$i] + 1) * BIG_BLOCK_SIZE;
+			//echo "pos = $pos";
+	for ($j = 0 ; $j < BIG_BLOCK_SIZE / 4; $j++) {
+>>>>>>> 0e02d285bdeb931535aeaa08d4b7bafe7c2b17bc
 				$this->bigBlockChain[$index] = GetInt4d($this->data, $pos);
 				$pos += 4 ;
 				$index++;
 			}
 		}
+<<<<<<< HEAD
 
 		// readSmallBlockDepot();
+=======
+	// readSmallBlockDepot();
+>>>>>>> 0e02d285bdeb931535aeaa08d4b7bafe7c2b17bc
 		$pos = 0;
 		$index = 0;
 		$sbdBlock = $this->sbdStartBlock;
 		$this->smallBlockChain = array();
+<<<<<<< HEAD
 
 		while ($sbdBlock != -2) {
 		  $pos = ($sbdBlock + 1) * BIG_BLOCK_SIZE;
 		  for ($j = 0; $j < BIG_BLOCK_SIZE / 4; $j++) {
 			$this->smallBlockChain[$index] = GetInt4d($this->data, $pos);
+=======
+		while ($sbdBlock != -2) {
+		  $pos = ($sbdBlock + 1) * BIG_BLOCK_SIZE;
+		  for ($j = 0; $j < BIG_BLOCK_SIZE / 4; $j++) {
+		  $this->smallBlockChain[$index] = GetInt4d($this->data, $pos);
+>>>>>>> 0e02d285bdeb931535aeaa08d4b7bafe7c2b17bc
 			$pos += 4;
 			$index++;
 		  }
 		  $sbdBlock = $this->bigBlockChain[$sbdBlock];
 		}
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 0e02d285bdeb931535aeaa08d4b7bafe7c2b17bc
 		// readData(rootStartBlock)
 		$block = $this->rootStartBlock;
 		$pos = 0;
 		$this->entry = $this->__readData($block);
 		$this->__readPropertySets();
 	}
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0e02d285bdeb931535aeaa08d4b7bafe7c2b17bc
 	function __readData($bl) {
 		$block = $bl;
 		$pos = 0;
@@ -195,8 +273,13 @@ class OLERead {
 		}
 		return $data;
 	 }
+<<<<<<< HEAD
 
 	function __readPropertySets(){
+=======
+	 
+	 function __readPropertySets(){
+>>>>>>> 0e02d285bdeb931535aeaa08d4b7bafe7c2b17bc
 		$offset = 0;
 		while ($offset < strlen($this->entry)) {
 			$d = substr($this->entry, $offset, PROPERTY_STORAGE_BLOCK_SIZE);
@@ -217,15 +300,22 @@ class OLERead {
 			if ((strtolower($name) == "workbook") || ( strtolower($name) == "book")) {
 				$this->wrkbook = count($this->props) - 1;
 			}
+<<<<<<< HEAD
 			if ($name == "Root Entry") {
+=======
+		if ($name == "Root Entry") {
+>>>>>>> 0e02d285bdeb931535aeaa08d4b7bafe7c2b17bc
 				$this->rootentry = count($this->props) - 1;
 			}
 			$offset += PROPERTY_STORAGE_BLOCK_SIZE;
 		}
 
 	}
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 0e02d285bdeb931535aeaa08d4b7bafe7c2b17bc
 	function getWorkBook(){
 		if ($this->props[$this->wrkbook]['size'] < SMALL_BLOCK_THRESHOLD){
 			$rootdata = $this->__readData($this->props[$this->rootentry]['startBlock']);
@@ -243,12 +333,20 @@ class OLERead {
 			if ($this->props[$this->wrkbook]['size'] % BIG_BLOCK_SIZE != 0) {
 				$numBlocks++;
 			}
+<<<<<<< HEAD
 
 			if ($numBlocks == 0) return '';
 			$streamData = '';
 			$block = $this->props[$this->wrkbook]['startBlock'];
 			$pos = 0;
 			while ($block != -2) {
+=======
+		if ($numBlocks == 0) return '';
+			$streamData = '';
+			$block = $this->props[$this->wrkbook]['startBlock'];
+			$pos = 0;
+		while ($block != -2) {
+>>>>>>> 0e02d285bdeb931535aeaa08d4b7bafe7c2b17bc
 			  $pos = ($block + 1) * BIG_BLOCK_SIZE;
 			  $streamData .= substr($this->data, $pos, BIG_BLOCK_SIZE);
 			  $block = $this->bigBlockChain[$block];
@@ -258,7 +356,10 @@ class OLERead {
 	}
 
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0e02d285bdeb931535aeaa08d4b7bafe7c2b17bc
 define('SPREADSHEET_EXCEL_READER_BIFF8',			 0x600);
 define('SPREADSHEET_EXCEL_READER_BIFF7',			 0x500);
 define('SPREADSHEET_EXCEL_READER_WORKBOOKGLOBALS',   0x5);
@@ -305,7 +406,10 @@ define('SPREADSHEET_EXCEL_READER_TYPE_DEFCOLWIDTH',  0x55);
 define('SPREADSHEET_EXCEL_READER_TYPE_STANDARDWIDTH', 0x99);
 define('SPREADSHEET_EXCEL_READER_DEF_NUM_FORMAT',	"%s");
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0e02d285bdeb931535aeaa08d4b7bafe7c2b17bc
 /*
 * Main Class
 */
@@ -316,7 +420,10 @@ class Spreadsheet_Excel_Reader {
 	var $colindexes = array();
 	var $standardColWidth = 0;
 	var $defaultColWidth = 0;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0e02d285bdeb931535aeaa08d4b7bafe7c2b17bc
 	function myHex($d) {
 		if ($d < 16) return "0" . dechex($d);
 		return dechex($d);
@@ -329,7 +436,10 @@ class Spreadsheet_Excel_Reader {
 		}
 		return $info;
 	}
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0e02d285bdeb931535aeaa08d4b7bafe7c2b17bc
 	function getCol($col) {
 		if (is_string($col)) {
 			$col = strtolower($col);
@@ -339,7 +449,10 @@ class Spreadsheet_Excel_Reader {
 		}
 		return $col;
 	}
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0e02d285bdeb931535aeaa08d4b7bafe7c2b17bc
 	// PUBLIC API FUNCTIONS
 	// --------------------
 
@@ -405,7 +518,10 @@ class Spreadsheet_Excel_Reader {
 	function rowhidden($row,$sheet=0) {
 		return !!$this->rowInfo[$sheet][$row]['hidden'];
 	}
+<<<<<<< HEAD
 	
+=======
+>>>>>>> 0e02d285bdeb931535aeaa08d4b7bafe7c2b17bc
 	// GET THE CSS FOR FORMATTING
 	// ==========================
 	function style($row,$col,$sheet=0,$properties='') {
@@ -470,7 +586,10 @@ class Spreadsheet_Excel_Reader {
 		
 		return $css;
 	}
+<<<<<<< HEAD
 	
+=======
+>>>>>>> 0e02d285bdeb931535aeaa08d4b7bafe7c2b17bc
 	// FORMAT PROPERTIES
 	// =================
 	function format($row,$col,$sheet=0) {
@@ -482,7 +601,10 @@ class Spreadsheet_Excel_Reader {
 	function formatColor($row,$col,$sheet=0) {
 		return $this->info($row,$col,'formatColor',$sheet);
 	}
+<<<<<<< HEAD
 	
+=======
+>>>>>>> 0e02d285bdeb931535aeaa08d4b7bafe7c2b17bc
 	// CELL (XF) PROPERTIES
 	// ====================
 	function xfRecord($row,$col,$sheet=0) {
@@ -529,7 +651,10 @@ class Spreadsheet_Excel_Reader {
 	function borderBottomColor($row,$col,$sheet=0) {
 		return $this->colors[$this->xfProperty($row,$col,$sheet,'borderBottomColor')];
 	}
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0e02d285bdeb931535aeaa08d4b7bafe7c2b17bc
 	// FONT PROPERTIES
 	// ===============
 	function fontRecord($row,$col,$sheet=0) {
@@ -581,7 +706,10 @@ class Spreadsheet_Excel_Reader {
 	function font($row,$col,$sheet=0) {
 		return $this->fontProperty($row,$col,$sheet,'font');
 	}
+<<<<<<< HEAD
 	
+=======
+>>>>>>> 0e02d285bdeb931535aeaa08d4b7bafe7c2b17bc
 	// DUMP AN HTML TABLE OF THE ENTIRE XLS DATA
 	// =========================================
 	function dump($row_numbers=false,$col_letters=false,$sheet=0,$table_class='excel') {
@@ -600,7 +728,10 @@ class Spreadsheet_Excel_Reader {
 			}
 			$out .= "</tr></thead>\n";
 		}
+<<<<<<< HEAD
 		
+=======
+>>>>>>> 0e02d285bdeb931535aeaa08d4b7bafe7c2b17bc
 		$out .= "<tbody>\n";
 		for($row=1;$row<=$this->rowcount($sheet);$row++) {
 			$rowheight = $this->rowheight($row,$sheet);
@@ -628,7 +759,11 @@ class Spreadsheet_Excel_Reader {
 					if ($this->colhidden($col,$sheet)) {
 						$style .= "display:none;";
 					}
+<<<<<<< HEAD
 					$out .= "\n\t\t<td style=\"$style\"" . ($colspan > 1?" colspan=$colspan":"") . ($rowspan > 1?" rowspan=$rowspan":"") . ">";
+=======
+				$out .= "\n\t\t<td style=\"$style\"" . ($colspan > 1?" colspan=$colspan":"") . ($rowspan > 1?" rowspan=$rowspan":"") . ">";
+>>>>>>> 0e02d285bdeb931535aeaa08d4b7bafe7c2b17bc
 					$val = $this->val($row,$col,$sheet);
 					if ($val=='') { $val="&nbsp;"; }
 					else { 
@@ -647,21 +782,31 @@ class Spreadsheet_Excel_Reader {
 		$out .= "</tbody></table>";
 		return $out;
 	}
+<<<<<<< HEAD
 	
 	// --------------
 	// END PUBLIC API
 
 
+=======
+	// --------------
+	// END PUBLIC API
+>>>>>>> 0e02d285bdeb931535aeaa08d4b7bafe7c2b17bc
 	var $boundsheets = array();
 	var $formatRecords = array();
 	var $fontRecords = array();
 	var $xfRecords = array();
 	var $colInfo = array();
    	var $rowInfo = array();
+<<<<<<< HEAD
 	
 	var $sst = array();
 	var $sheets = array();
 
+=======
+   	var $sst = array();
+	var $sheets = array();
+>>>>>>> 0e02d285bdeb931535aeaa08d4b7bafe7c2b17bc
 	var $data;
 	var $_ole;
 	var $_defaultEncoding = "UTF-8";
@@ -669,7 +814,10 @@ class Spreadsheet_Excel_Reader {
 	var $_columnsFormat = array();
 	var $_rowoffset = 1;
 	var $_coloffset = 1;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0e02d285bdeb931535aeaa08d4b7bafe7c2b17bc
 	/**
 	 * List of default date formats used by Excel
 	 */
@@ -687,7 +835,10 @@ class Spreadsheet_Excel_Reader {
 		0x2e => "H:i:s",
 		0x2f => "i:s.S"
 	);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0e02d285bdeb931535aeaa08d4b7bafe7c2b17bc
 	/**
 	 * Default number formats used by Excel
 	 */
@@ -713,8 +864,12 @@ class Spreadsheet_Excel_Reader {
 		0x2c => "\$#,##0.00;(\$#,##0.00)",  // Not exactly
 		0x30 => "##0.0E+0"
 	);
+<<<<<<< HEAD
 
     var $colors = Array(
+=======
+	var $colors = Array(
+>>>>>>> 0e02d285bdeb931535aeaa08d4b7bafe7c2b17bc
         0x00 => "#000000",
         0x01 => "#FFFFFF",
         0x02 => "#FF0000",
@@ -781,8 +936,13 @@ class Spreadsheet_Excel_Reader {
         0x3F => "#333333",
         0x40 => "#000000",
         0x41 => "#FFFFFF",
+<<<<<<< HEAD
 
         0x43 => "#000000",
+=======
+        
+         0x43 => "#000000",
+>>>>>>> 0e02d285bdeb931535aeaa08d4b7bafe7c2b17bc
         0x4D => "#000000",
         0x4E => "#FFFFFF",
         0x4F => "#000000",
@@ -791,8 +951,12 @@ class Spreadsheet_Excel_Reader {
 
         0x7FFF => "#000000"
     );
+<<<<<<< HEAD
 
 	var $lineStyles = array(
+=======
+    var $lineStyles = array(
+>>>>>>> 0e02d285bdeb931535aeaa08d4b7bafe7c2b17bc
 		0x00 => "",
 		0x01 => "Thin",
 		0x02 => "Medium",
@@ -808,7 +972,10 @@ class Spreadsheet_Excel_Reader {
 		0x0C => "Medium dash-dot-dotted",
 		0x0D => "Slanted medium dash-dotted"
 	);	
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0e02d285bdeb931535aeaa08d4b7bafe7c2b17bc
 	var $lineStylesCss = array(
 		"Thin" => "1px solid", 
 		"Medium" => "2px solid", 
@@ -824,13 +991,19 @@ class Spreadsheet_Excel_Reader {
 		"Medium dash-dot-dotted" => "2px dashed", 
 		"Slanted medium dash-dotte" => "2px dashed" 
 	);
+<<<<<<< HEAD
 	
+=======
+>>>>>>> 0e02d285bdeb931535aeaa08d4b7bafe7c2b17bc
 	function read16bitstring($data, $start) {
 		$len = 0;
 		while (ord($data[$start + $len]) + ord($data[$start + $len + 1]) > 0) $len++;
 		return substr($data, $start, $len);
 	}
+<<<<<<< HEAD
 	
+=======
+>>>>>>> 0e02d285bdeb931535aeaa08d4b7bafe7c2b17bc
 	// ADDED by Matt Kruse for better formatting
 	function _format_value($format,$num,$f) {
 		// 49==TEXT format
@@ -838,7 +1011,10 @@ class Spreadsheet_Excel_Reader {
 		if ( (!$f && $format=="%s") || ($f==49) || ($format=="GENERAL") ) { 
 			return array('string'=>$num, 'formatColor'=>null); 
 		}
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0e02d285bdeb931535aeaa08d4b7bafe7c2b17bc
 		// Custom pattern can be POSITIVE;NEGATIVE;ZERO
 		// The "text" option as 4th parameter is not handled
 		$parts = split(";",$format);
@@ -847,12 +1023,19 @@ class Spreadsheet_Excel_Reader {
 		if (count($parts)>2 && $num==0) {
 			$pattern = $parts[2];
 		}
+<<<<<<< HEAD
 		// Zero pattern
+=======
+			// Zero pattern
+>>>>>>> 0e02d285bdeb931535aeaa08d4b7bafe7c2b17bc
 		if (count($parts)>1 && $num<0) {
 			$pattern = $parts[1];
 			$num = abs($num);
 		}
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0e02d285bdeb931535aeaa08d4b7bafe7c2b17bc
 		$color = "";
 		$matches = array();
 		$color_regex = "/^\[(BLACK|BLUE|CYAN|GREEN|MAGENTA|RED|WHITE|YELLOW)\]/i";
@@ -860,7 +1043,10 @@ class Spreadsheet_Excel_Reader {
 			$color = strtolower($matches[1]);
 			$pattern = preg_replace($color_regex,"",$pattern);
 		}
+<<<<<<< HEAD
 		
+=======
+>>>>>>> 0e02d285bdeb931535aeaa08d4b7bafe7c2b17bc
 		// In Excel formats, "_" is used to add spacing, which we can't do in HTML
 		$pattern = preg_replace("/_./","",$pattern);
 		
@@ -872,7 +1058,10 @@ class Spreadsheet_Excel_Reader {
 
 		// TEMPORARY - Convert # to 0
 		$pattern = preg_replace("/\#/","0",$pattern);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0e02d285bdeb931535aeaa08d4b7bafe7c2b17bc
 		// Find out if we need comma formatting
 		$has_commas = preg_match("/,/",$pattern);
 		if ($has_commas) {
@@ -884,7 +1073,11 @@ class Spreadsheet_Excel_Reader {
 			$num = $num * 100;
 			$pattern = preg_replace("/(\d)(\%)([^\%]|$)/","$1%$3",$pattern);
 		}
+<<<<<<< HEAD
 
+=======
+		
+>>>>>>> 0e02d285bdeb931535aeaa08d4b7bafe7c2b17bc
 		// Handle the number itself
 		$number_regex = "/(\d+)(\.?)(\d*)/";
 		if (preg_match($number_regex,$pattern,$matches)) {
@@ -906,7 +1099,10 @@ class Spreadsheet_Excel_Reader {
 			'formatColor'=>$color
 		);
 	}
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0e02d285bdeb931535aeaa08d4b7bafe7c2b17bc
 	/**
 	 * Constructor
 	 *
@@ -928,14 +1124,20 @@ class Spreadsheet_Excel_Reader {
 			$this->read($file);
 		}
 	}
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0e02d285bdeb931535aeaa08d4b7bafe7c2b17bc
 	/**
 	 * Set the encoding method
 	 */
 	function setOutputEncoding($encoding) {
 		$this->_defaultEncoding = $encoding;
 	}
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0e02d285bdeb931535aeaa08d4b7bafe7c2b17bc
 	/**
 	 *  $encoder = 'iconv' or 'mb'
 	 *  set iconv if you would like use 'iconv' for encode UTF-16LE to your encoding
@@ -948,14 +1150,23 @@ class Spreadsheet_Excel_Reader {
 		} elseif ($encoder == 'mb') {
 			$this->_encoderFunction = function_exists('mb_convert_encoding') ? 'mb_convert_encoding' : '';
 		}
+<<<<<<< HEAD
 	}
 
+=======
+	}	
+	
+>>>>>>> 0e02d285bdeb931535aeaa08d4b7bafe7c2b17bc
 	function setRowColOffset($iOffset) {
 		$this->_rowoffset = $iOffset;
 		$this->_coloffset = $iOffset;
 	}
+<<<<<<< HEAD
 
 	/**
+=======
+/**
+>>>>>>> 0e02d285bdeb931535aeaa08d4b7bafe7c2b17bc
 	 * Set the default number format
 	 */
 	function setDefaultFormat($sFormat) {
@@ -968,7 +1179,11 @@ class Spreadsheet_Excel_Reader {
 	function setColumnFormat($column, $sFormat) {
 		$this->_columnsFormat[$column] = $sFormat;
 	}
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> 0e02d285bdeb931535aeaa08d4b7bafe7c2b17bc
 	/**
 	 * Read the spreadsheet file using OLE, then parse
 	 */
@@ -987,7 +1202,10 @@ class Spreadsheet_Excel_Reader {
 		$this->data = $this->_ole->getWorkBook();
 		$this->_parse();
 	}
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0e02d285bdeb931535aeaa08d4b7bafe7c2b17bc
 	/**
 	 * Parse a workbook
 	 *
@@ -1009,7 +1227,10 @@ class Spreadsheet_Excel_Reader {
 			($version != SPREADSHEET_EXCEL_READER_BIFF7)) {
 			return false;
 		}
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0e02d285bdeb931535aeaa08d4b7bafe7c2b17bc
 		if ($substreamType != SPREADSHEET_EXCEL_READER_WORKBOOKGLOBALS){
 			return false;
 		}
@@ -1052,7 +1273,10 @@ class Spreadsheet_Excel_Reader {
 							$formattingRuns = v($data,$spos);
 							$spos += 2;
 						}
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0e02d285bdeb931535aeaa08d4b7bafe7c2b17bc
 						if ($extendedString) {
 							// Read in cchExtRst
 							$extendedRunLength = $this->_GetInt4d($data, $spos);
@@ -1118,8 +1342,12 @@ class Spreadsheet_Excel_Reader {
 							}
 						}
 						$retstr = ($asciiEncoding) ? $retstr : $this->_encodeUTF16($retstr);
+<<<<<<< HEAD
 
 						if ($richString){
+=======
+if ($richString){
+>>>>>>> 0e02d285bdeb931535aeaa08d4b7bafe7c2b17bc
 							$spos += 4 * $formattingRuns;
 						}
 
@@ -1316,7 +1544,10 @@ class Spreadsheet_Excel_Reader {
 		}
 		return true;
 	}
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0e02d285bdeb931535aeaa08d4b7bafe7c2b17bc
 	/**
 	 * Parse a worksheet
 	 */
@@ -1587,7 +1818,11 @@ class Spreadsheet_Excel_Reader {
 		if (!isset($this->sheets[$this->sn]['numCols']))
 			 $this->sheets[$this->sn]['numCols'] = $this->sheets[$this->sn]['maxcol'];
 		}
+<<<<<<< HEAD
 
+=======
+		
+>>>>>>> 0e02d285bdeb931535aeaa08d4b7bafe7c2b17bc
 		function isDate($spos) {
 			$xfindex = ord($this->data[$spos+4]) | ord($this->data[$spos+5]) << 8;
 			return ($this->xfRecords[$xfindex]['type'] == 'date');
@@ -1657,9 +1892,13 @@ class Spreadsheet_Excel_Reader {
 			);
 
 		}
+<<<<<<< HEAD
 
 
 	function createNumber($spos) {
+=======
+		function createNumber($spos) {
+>>>>>>> 0e02d285bdeb931535aeaa08d4b7bafe7c2b17bc
 		$rknumhigh = $this->_GetInt4d($this->data, $spos + 10);
 		$rknumlow = $this->_GetInt4d($this->data, $spos + 6);
 		$sign = ($rknumhigh & 0x80000000) >> 31;
@@ -1733,5 +1972,8 @@ class Spreadsheet_Excel_Reader {
 	}
 
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0e02d285bdeb931535aeaa08d4b7bafe7c2b17bc
 ?>
