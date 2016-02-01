@@ -10,4 +10,6 @@ $data = mysql_query($query);
 
 $json = '{"wilayah": {';
 $json .= '"petak":[ ';
+while($x = mysql_fetch_array($data)){
+    $json .= '{';
 ?>
