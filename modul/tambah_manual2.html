@@ -21,3 +21,14 @@
 	          baseIcon.infoWindowAnchor=new GPoint(16,0);
 	
 	var icon = new GIcon(baseIcon, "icon/home.png", null, null);
+
+	function kasihtanda(lokasi,iconnya){
+	   icon = iconnya ;
+       tanda = new google.maps.Marker({
+            position: lokasi,
+            map: map
+    });
+    $("#x").val(lokasi.lat());
+    $("#y").val(lokasi.lng());
+
+}
