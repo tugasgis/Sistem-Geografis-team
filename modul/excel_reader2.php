@@ -475,4 +475,11 @@ class Spreadsheet_Excel_Reader {
 		}
 		return null;
 	}
+	function xfProperty($row,$col,$sheet,$prop) {
+		$xfRecord = $this->xfRecord($row,$col,$sheet);
+		if ($xfRecord!=null) {
+			return $xfRecord[$prop];
+		}
+		return "";
+	}
 ?>
