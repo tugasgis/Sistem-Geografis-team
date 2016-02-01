@@ -849,4 +849,26 @@ class Spreadsheet_Excel_Reader {
 			$pattern = preg_replace("/(\d)(\%)([^\%]|$)/","$1%$3",$pattern);
 		}
 		
+		// Handle the number itself
+		$number_regex = "/(\d+)(\.?)(\d*)/";
+		if (preg_match($number_regex,$pattern,$matches)) {
+			$left = $matches[1];
+			$dec = $matches[2];
+			$right = $matches[3];
+			if ($has_commas) {
+				$formatted = number_format($num,strlen($right));
+			}
+			else {
+				$sprintf_pattern = "%1.".strlen($right)."f";
+				$formatted = sprintf($sprintf_pattern, $num);
+			}
+			$pattern = preg_replace($number_regex, $formatted, $pattern);
+		}
+
+		return array(
+			'string'=>$pattern,
+			'formatColor'=>$color
+		);
+	}
+		
 ?>
