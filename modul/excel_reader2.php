@@ -1292,4 +1292,254 @@ if ($richString){
 		if ($substreamType != SPREADSHEET_EXCEL_READER_WORKSHEET){
 			return -2;
 		}
+		$spos += $length + 4;
+		while($cont) {
+			$lowcode = ord($data[$spos]);
+			if ($lowcode == SPREADSHEET_EXCEL_READER_TYPE_EOF) break;
+			$code = $lowcode | ord($data[$spos+1])<<8;
+			$length = ord($data[$spos+2]) | ord($data[$spos+3])<<8;
+			$spos += 4;
+			$this->sheets[$this->sn]['maxrow'] = $this->_rowoffset - 1;
+			$this->sheets[$this->sn]['maxcol'] = $this->_coloffset - 1;
+			unset($this->rectype);
+			switch ($code) {
+				case SPREADSHEET_EXCEL_READER_TYPE_DIMENSION:
+					if (!isset($this->numRows)) {
+						if (($length == 10) ||  ($version == SPREADSHEET_EXCEL_READER_BIFF7)){
+							$this->sheets[$this->sn]['numRows'] = ord($data[$spos+2]) | ord($data[$spos+3]) << 8;
+							$this->sheets[$this->sn]['numCols'] = ord($data[$spos+6]) | ord($data[$spos+7]) << 8;
+						} else {
+							$this->sheets[$this->sn]['numRows'] = ord($data[$spos+4]) | ord($data[$spos+5]) << 8;
+							$this->sheets[$this->sn]['numCols'] = ord($data[$spos+10]) | ord($data[$spos+11]) << 8;
+						}
+					}
+					break;
+				case SPREADSHEET_EXCEL_READER_TYPE_MERGEDCELLS:
+					$cellRanges = ord($data[$spos]) | ord($data[$spos+1])<<8;
+					for ($i = 0; $i < $cellRanges; $i++) {
+						$fr =  ord($data[$spos + 8*$i + 2]) | ord($data[$spos + 8*$i + 3])<<8;
+						$lr =  ord($data[$spos + 8*$i + 4]) | ord($data[$spos + 8*$i + 5])<<8;
+						$fc =  ord($data[$spos + 8*$i + 6]) | ord($data[$spos + 8*$i + 7])<<8;
+						$lc =  ord($data[$spos + 8*$i + 8]) | ord($data[$spos + 8*$i + 9])<<8;
+						if ($lr - $fr > 0) {
+							$this->sheets[$this->sn]['cellsInfo'][$fr+1][$fc+1]['rowspan'] = $lr - $fr + 1;
+						}
+						if ($lc - $fc > 0) {
+							$this->sheets[$this->sn]['cellsInfo'][$fr+1][$fc+1]['colspan'] = $lc - $fc + 1;
+						}
+					}
+					break;
+				case SPREADSHEET_EXCEL_READER_TYPE_RK:
+				case SPREADSHEET_EXCEL_READER_TYPE_RK2:
+					$row = ord($data[$spos]) | ord($data[$spos+1])<<8;
+					$column = ord($data[$spos+2]) | ord($data[$spos+3])<<8;
+					$rknum = $this->_GetInt4d($data, $spos + 6);
+					$numValue = $this->_GetIEEE754($rknum);
+					$info = $this->_getCellDetails($spos,$numValue,$column);
+					$this->addcell($row, $column, $info['string'],$info);
+					break;
+				case SPREADSHEET_EXCEL_READER_TYPE_LABELSST:
+					$row		= ord($data[$spos]) | ord($data[$spos+1])<<8;
+					$column	 = ord($data[$spos+2]) | ord($data[$spos+3])<<8;
+					$xfindex	= ord($data[$spos+4]) | ord($data[$spos+5])<<8;
+					$index  = $this->_GetInt4d($data, $spos + 6);
+					$this->addcell($row, $column, $this->sst[$index], array('xfIndex'=>$xfindex) );
+					break;
+				case SPREADSHEET_EXCEL_READER_TYPE_MULRK:
+					$row		= ord($data[$spos]) | ord($data[$spos+1])<<8;
+					$colFirst   = ord($data[$spos+2]) | ord($data[$spos+3])<<8;
+					$colLast	= ord($data[$spos + $length - 2]) | ord($data[$spos + $length - 1])<<8;
+					$columns	= $colLast - $colFirst + 1;
+					$tmppos = $spos+4;
+					for ($i = 0; $i < $columns; $i++) {
+						$numValue = $this->_GetIEEE754($this->_GetInt4d($data, $tmppos + 2));
+						$info = $this->_getCellDetails($tmppos-4,$numValue,$colFirst + $i + 1);
+						$tmppos += 6;
+						$this->addcell($row, $colFirst + $i, $info['string'], $info);
+					}
+					break;
+				case SPREADSHEET_EXCEL_READER_TYPE_NUMBER:
+					$row	= ord($data[$spos]) | ord($data[$spos+1])<<8;
+					$column = ord($data[$spos+2]) | ord($data[$spos+3])<<8;
+					$tmp = unpack("ddouble", substr($data, $spos + 6, 8)); // It machine machine dependent
+					if ($this->isDate($spos)) {
+						$numValue = $tmp['double'];
+					}
+					else {
+						$numValue = $this->createNumber($spos);
+					}
+					$info = $this->_getCellDetails($spos,$numValue,$column);
+					$this->addcell($row, $column, $info['string'], $info);
+					break;
+
+				case SPREADSHEET_EXCEL_READER_TYPE_FORMULA:
+				case SPREADSHEET_EXCEL_READER_TYPE_FORMULA2:
+					$row	= ord($data[$spos]) | ord($data[$spos+1])<<8;
+					$column = ord($data[$spos+2]) | ord($data[$spos+3])<<8;
+					if ((ord($data[$spos+6])==0) && (ord($data[$spos+12])==255) && (ord($data[$spos+13])==255)) {
+						//String formula. Result follows in a STRING record
+						// This row/col are stored to be referenced in that record
+						// http://code.google.com/p/php-excel-reader/issues/detail?id=4
+						$previousRow = $row;
+						$previousCol = $column;
+					} elseif ((ord($data[$spos+6])==1) && (ord($data[$spos+12])==255) && (ord($data[$spos+13])==255)) {
+						//Boolean formula. Result is in +2; 0=false,1=true
+						// http://code.google.com/p/php-excel-reader/issues/detail?id=4
+                        if (ord($this->data[$spos+8])==1) {
+                            $this->addcell($row, $column, "TRUE");
+                        } else {
+                            $this->addcell($row, $column, "FALSE");
+                        }
+					} elseif ((ord($data[$spos+6])==2) && (ord($data[$spos+12])==255) && (ord($data[$spos+13])==255)) {
+						//Error formula. Error code is in +2;
+					} elseif ((ord($data[$spos+6])==3) && (ord($data[$spos+12])==255) && (ord($data[$spos+13])==255)) {
+						//Formula result is a null string.
+						$this->addcell($row, $column, '');
+					} else {
+						// result is a number, so first 14 bytes are just like a _NUMBER record
+						$tmp = unpack("ddouble", substr($data, $spos + 6, 8)); // It machine machine dependent
+							  if ($this->isDate($spos)) {
+								$numValue = $tmp['double'];
+							  }
+							  else {
+								$numValue = $this->createNumber($spos);
+							  }
+						$info = $this->_getCellDetails($spos,$numValue,$column);
+						$this->addcell($row, $column, $info['string'], $info);
+					}
+					break;
+				case SPREADSHEET_EXCEL_READER_TYPE_BOOLERR:
+					$row	= ord($data[$spos]) | ord($data[$spos+1])<<8;
+					$column = ord($data[$spos+2]) | ord($data[$spos+3])<<8;
+					$string = ord($data[$spos+6]);
+					$this->addcell($row, $column, $string);
+					break;
+                case SPREADSHEET_EXCEL_READER_TYPE_STRING:
+					// http://code.google.com/p/php-excel-reader/issues/detail?id=4
+					if ($version == SPREADSHEET_EXCEL_READER_BIFF8){
+						// Unicode 16 string, like an SST record
+						$xpos = $spos;
+						$numChars =ord($data[$xpos]) | (ord($data[$xpos+1]) << 8);
+						$xpos += 2;
+						$optionFlags =ord($data[$xpos]);
+						$xpos++;
+						$asciiEncoding = (($optionFlags &0x01) == 0) ;
+						$extendedString = (($optionFlags & 0x04) != 0);
+                        // See if string contains formatting information
+						$richString = (($optionFlags & 0x08) != 0);
+						if ($richString) {
+							// Read in the crun
+							$formattingRuns =ord($data[$xpos]) | (ord($data[$xpos+1]) << 8);
+							$xpos += 2;
+						}
+						if ($extendedString) {
+							// Read in cchExtRst
+							$extendedRunLength =$this->_GetInt4d($this->data, $xpos);
+							$xpos += 4;
+						}
+						$len = ($asciiEncoding)?$numChars : $numChars*2;
+						$retstr =substr($data, $xpos, $len);
+						$xpos += $len;
+						$retstr = ($asciiEncoding)? $retstr : $this->_encodeUTF16($retstr);
+					}
+					elseif ($version == SPREADSHEET_EXCEL_READER_BIFF7){
+						// Simple byte string
+						$xpos = $spos;
+						$numChars =ord($data[$xpos]) | (ord($data[$xpos+1]) << 8);
+						$xpos += 2;
+						$retstr =substr($data, $xpos, $numChars);
+					}
+					$this->addcell($previousRow, $previousCol, $retstr);
+					break;
+				case SPREADSHEET_EXCEL_READER_TYPE_ROW:
+					$row	= ord($data[$spos]) | ord($data[$spos+1])<<8;
+					$rowInfo = ord($data[$spos + 6]) | ((ord($data[$spos+7]) << 8) & 0x7FFF);
+					if (($rowInfo & 0x8000) > 0) {
+						$rowHeight = -1;
+					} else {
+						$rowHeight = $rowInfo & 0x7FFF;
+					}
+					$rowHidden = (ord($data[$spos + 12]) & 0x20) >> 5;
+					$this->rowInfo[$this->sn][$row+1] = Array('height' => $rowHeight / 20, 'hidden'=>$rowHidden );
+					break;
+				case SPREADSHEET_EXCEL_READER_TYPE_DBCELL:
+					break;
+				case SPREADSHEET_EXCEL_READER_TYPE_MULBLANK:
+					$row = ord($data[$spos]) | ord($data[$spos+1])<<8;
+					$column = ord($data[$spos+2]) | ord($data[$spos+3])<<8;
+					$cols = ($length / 2) - 3;
+					for ($c = 0; $c < $cols; $c++) {
+						$xfindex = ord($data[$spos + 4 + ($c * 2)]) | ord($data[$spos + 5 + ($c * 2)])<<8;
+						$this->addcell($row, $column + $c, "", array('xfIndex'=>$xfindex));
+					}
+					break;
+				case SPREADSHEET_EXCEL_READER_TYPE_LABEL:
+					$row	= ord($data[$spos]) | ord($data[$spos+1])<<8;
+					$column = ord($data[$spos+2]) | ord($data[$spos+3])<<8;
+					$this->addcell($row, $column, substr($data, $spos + 8, ord($data[$spos + 6]) | ord($data[$spos + 7])<<8));
+					break;
+				case SPREADSHEET_EXCEL_READER_TYPE_EOF:
+					$cont = false;
+					break;
+				case SPREADSHEET_EXCEL_READER_TYPE_HYPER:
+					//  Only handle hyperlinks to a URL
+					$row	= ord($this->data[$spos]) | ord($this->data[$spos+1])<<8;
+					$row2   = ord($this->data[$spos+2]) | ord($this->data[$spos+3])<<8;
+					$column = ord($this->data[$spos+4]) | ord($this->data[$spos+5])<<8;
+					$column2 = ord($this->data[$spos+6]) | ord($this->data[$spos+7])<<8;
+					$linkdata = Array();
+					$flags = ord($this->data[$spos + 28]);
+					$udesc = "";
+					$ulink = "";
+					$uloc = 32;
+					$linkdata['flags'] = $flags;
+					if (($flags & 1) > 0 ) {   // is a type we understand
+						//  is there a description ?
+						if (($flags & 0x14) == 0x14 ) {   // has a description
+							$uloc += 4;
+							$descLen = ord($this->data[$spos + 32]) | ord($this->data[$spos + 33]) << 8;
+							$udesc = substr($this->data, $spos + $uloc, $descLen * 2);
+							$uloc += 2 * $descLen;
+						}
+						$ulink = $this->read16bitstring($this->data, $spos + $uloc + 20);
+						if ($udesc == "") {
+							$udesc = $ulink;
+						}
+					}
+					$linkdata['desc'] = $udesc;
+					$linkdata['link'] = $this->_encodeUTF16($ulink);
+					for ($r=$row; $r<=$row2; $r++) { 
+						for ($c=$column; $c<=$column2; $c++) {
+							$this->sheets[$this->sn]['cellsInfo'][$r+1][$c+1]['hyperlink'] = $linkdata;
+						}
+					}
+					break;
+				case SPREADSHEET_EXCEL_READER_TYPE_DEFCOLWIDTH:
+					$this->defaultColWidth  = ord($data[$spos+4]) | ord($data[$spos+5]) << 8; 
+					break;
+				case SPREADSHEET_EXCEL_READER_TYPE_STANDARDWIDTH:
+					$this->standardColWidth  = ord($data[$spos+4]) | ord($data[$spos+5]) << 8; 
+					break;
+				case SPREADSHEET_EXCEL_READER_TYPE_COLINFO:
+					$colfrom = ord($data[$spos+0]) | ord($data[$spos+1]) << 8;
+					$colto = ord($data[$spos+2]) | ord($data[$spos+3]) << 8;
+					$cw = ord($data[$spos+4]) | ord($data[$spos+5]) << 8; 
+					$cxf = ord($data[$spos+6]) | ord($data[$spos+7]) << 8; 
+					$co = ord($data[$spos+8]); 
+					for ($coli = $colfrom; $coli <= $colto; $coli++) {
+						$this->colInfo[$this->sn][$coli+1] = Array('width' => $cw, 'xf' => $cxf, 'hidden' => ($co & 0x01), 'collapsed' => ($co & 0x1000) >> 12);
+					}
+					break;
+
+				default:
+					break;
+			}
+			$spos += $length;
+		}
+
+		if (!isset($this->sheets[$this->sn]['numRows']))
+			 $this->sheets[$this->sn]['numRows'] = $this->sheets[$this->sn]['maxrow'];
+		if (!isset($this->sheets[$this->sn]['numCols']))
+			 $this->sheets[$this->sn]['numCols'] = $this->sheets[$this->sn]['maxcol'];
+		}
 ?>
