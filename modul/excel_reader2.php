@@ -360,4 +360,9 @@ class Spreadsheet_Excel_Reader {
 		if ($val=="") { return 1; }
 		return $val;
 	}
+	function colspan($row,$col,$sheet=0) {
+		$val = $this->info($row,$col,'colspan',$sheet);
+		if ($val=="") { return 1; }
+		return $val;
+	}
 ?>
