@@ -455,4 +455,9 @@ class Spreadsheet_Excel_Reader {
 		
 		return $css;
 	}
+	// FORMAT PROPERTIES
+	// =================
+	function format($row,$col,$sheet=0) {
+		return $this->info($row,$col,'format',$sheet);
+	}
 ?>
