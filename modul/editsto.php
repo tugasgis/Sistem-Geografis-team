@@ -44,3 +44,7 @@ $p      = new Paging;
     $posisi = $p->cariPosisi($batas);
 
 $tampil=mysql_query("SELECT * FROM sto ORDER BY id_sto DESC LIMIT $posisi,$batas");
+
+$no = $posisi+1;
+    while ($r=mysql_fetch_array($tampil)){
+      echo "
