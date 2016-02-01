@@ -531,4 +531,7 @@ class Spreadsheet_Excel_Reader {
 		}
 		return false;
 	}
+	function fontIndex($row,$col,$sheet=0) {
+		return $this->xfProperty($row,$col,$sheet,'fontIndex');
+	}
 ?>
