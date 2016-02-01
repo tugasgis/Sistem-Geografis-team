@@ -500,4 +500,7 @@ class Spreadsheet_Excel_Reader {
 	function borderBottom($row,$col,$sheet=0) {
 		return $this->xfProperty($row,$col,$sheet,'borderBottom');
 	}
+	function borderLeftColor($row,$col,$sheet=0) {
+		return $this->colors[$this->xfProperty($row,$col,$sheet,'borderLeftColor')];
+	}
 ?>
