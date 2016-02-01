@@ -40,3 +40,8 @@ switch($_GET[act]){
 	<th>Longitude</th>
 	<th>Aksi</th>
 	</tr>";
+$p      = new Paging;
+$batas  = 10;
+$posisi = $p->cariPosisi($batas);
+
+$tampil=mysql_query("SELECT * FROM dp ORDER BY id_dp DESC LIMIT $posisi,$batas");
