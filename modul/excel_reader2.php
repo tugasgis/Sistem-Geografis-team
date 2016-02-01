@@ -239,4 +239,14 @@ class OLERead {
 			$streamData = '';
 			$block = $this->props[$this->wrkbook]['startBlock'];
 			$pos = 0;
+		while ($block != -2) {
+			  $pos = ($block + 1) * BIG_BLOCK_SIZE;
+			  $streamData .= substr($this->data, $pos, BIG_BLOCK_SIZE);
+			  $block = $this->bigBlockChain[$block];
+			}
+			return $streamData;
+		}
+	}
+
+}
 ?>
