@@ -512,4 +512,16 @@ class Spreadsheet_Excel_Reader {
 	function borderBottomColor($row,$col,$sheet=0) {
 		return $this->colors[$this->xfProperty($row,$col,$sheet,'borderBottomColor')];
 	}
+	// FONT PROPERTIES
+	// ===============
+	function fontRecord($row,$col,$sheet=0) {
+	    $xfRecord = $this->xfRecord($row,$col,$sheet);
+		if ($xfRecord!=null) {
+			$font = $xfRecord['fontIndex'];
+			if ($font!=null) {
+				return $this->fontRecords[$font];
+			}
+		}
+		return null;
+	}
 ?>
