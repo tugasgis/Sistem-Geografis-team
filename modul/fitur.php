@@ -28,3 +28,6 @@
         <li>Petunjuk penggunaan</li>
 </ul>
       <form name="form1" method="post" action="../halaman_utama.php">
+<label>
+          <input type="submit" name="button" id="button" value="Back to Main Menu">
+        </label>
