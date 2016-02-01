@@ -603,4 +603,10 @@ class Spreadsheet_Excel_Reader {
 						}
 					}
 				}
+				if(!$this->sheets[$sheet]['cellsInfo'][$row][$col]['dontprint']) {
+					$style = $this->style($row,$col,$sheet);
+					if ($this->colhidden($col,$sheet)) {
+						$style .= "display:none;";
+					}
+					
 ?>
