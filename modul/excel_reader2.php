@@ -326,4 +326,14 @@ class Spreadsheet_Excel_Reader {
 		}
 		return $col;
 	}
+	// PUBLIC API FUNCTIONS
+	// --------------------
+
+	function val($row,$col,$sheet=0) {
+		$col = $this->getCol($col);
+		if (array_key_exists($row,$this->sheets[$sheet]['cells']) && array_key_exists($col,$this->sheets[$sheet]['cells'][$row])) {
+			return $this->sheets[$sheet]['cells'][$row][$col];
+		}
+		return "";
+	}
 ?>
