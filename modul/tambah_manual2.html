@@ -57,3 +57,14 @@
       }
 
 }
+    google.maps.event.addListener(map, "click", function(event) {
+        kasihtanda(event.latLng);
+    });
+    
+	
+	google.maps.event.addListener(tanda, "click", function() {
+          infowindow.open(map,tanda);
+        });
+    });
+    }
+	
