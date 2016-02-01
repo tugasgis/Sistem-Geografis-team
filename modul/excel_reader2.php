@@ -779,4 +779,19 @@ class Spreadsheet_Excel_Reader {
 		0x0C => "Medium dash-dot-dotted",
 		0x0D => "Slanted medium dash-dotted"
 	);	
+	var $lineStylesCss = array(
+		"Thin" => "1px solid", 
+		"Medium" => "2px solid", 
+		"Dashed" => "1px dashed", 
+		"Dotted" => "1px dotted", 
+		"Thick" => "3px solid", 
+		"Double" => "double", 
+		"Hair" => "1px solid", 
+		"Medium dashed" => "2px dashed", 
+		"Thin dash-dotted" => "1px dashed", 
+		"Medium dash-dotted" => "2px dashed", 
+		"Thin dash-dot-dotted" => "1px dashed", 
+		"Medium dash-dot-dotted" => "2px dashed", 
+		"Slanted medium dash-dotte" => "2px dashed" 
+	);
 ?>
