@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>Consumer Service Mapping Solution Dashboard</title>
+<title>MAP DATA PELANGAN INDIHOME</title>
 <head>
 <title>Consumer Service Mapping Solution Dashboard</title>
 <!-- by Firmansyah Wahyudiarto & Lida Pratiwi Puteri -->
@@ -35,12 +35,12 @@
 <style type="text/css">
 <!--
 #bawah {
-	position:absolute;
-	left:168px;
-	top:648px;
-	width:939px;
-	height:35px;
-	z-index:1;
+	position: absolute;
+	left: 206px;
+	top: 637px;
+	width: 939px;
+	height: 35px;
+	z-index: 1;
 	background-color: #6FD601;
 	text-align: center;
 	font-family: Arial, Helvetica, sans-serif;
@@ -52,8 +52,8 @@
 </style>
 </head>
 <body>
-	<div id="bawah">Copyright &copy; 2011 by &laquo;<span class="lida"> Firmansyah Wahyudiarto & Lida Pratiwi Puteri</span> &raquo; <br>
- <span class="telkom">PT. Telkom Indonesia</span> Divisi Consumer Service</div>
+	<div id="bawah">Copyright &copy; 2015 by &laquo;<span class="lida">  </span> &raquo; <br>
+ <span class="telkom"></span> Divisi Consumer Service</div>
 	<div id="wrapper" class="container_16">
 		<div id="top_nav" class="nav_down bar_nav grid_16 round_all">
 <a href="#" class="minimize round_bottom"><span>minimize</span></a><img src="images/header-jadi.jpg" width="936" height="256"></div>
@@ -84,10 +84,10 @@
 								<li><a href="./modul/report_rk.php"><img src="images/icons/grey/trashcan_2.png">Report RK</a></li>
                         		<li><a href="./modul/report_dp.php"><img src="images/icons/grey/winner_podium.png">Report DP</a></li>
                                 <li><a href="./modul/report_sto.php"><img src="images/icons/grey/winner_podium.png">Report STO</a></li>
-                        	</ul>
-							  </li>					
+                       	  </ul>
+					  </li>					
 					</ul>
-					</li>				
+			</li>				
 				<li><a href="./modul/isi_gmaps.php" target="_blank">
 					<img src="images/icons/grey/battery.png">
 					<span>View Kecamatan</span>																	
@@ -119,7 +119,7 @@
 						<li><a href="./modul/tambahsto.php" target="_blank"><img src="images/icons/grey/trashcan_2.png">Tambah STO</a></li>
                         <li><a href="./modul/tambahrk.php" target="_blank"><img src="images/icons/grey/winner_podium.png">Tambah RK</a></li>
                         <li><a href="./modul/tambahdp.php" target="_blank"><img src="images/icons/grey/sign_post.png">Tambah DP</a></li>
-                    </ul>
+                  </ul>
 			</li>	
 			</li>	
 			 <li><a href="#">
@@ -144,7 +144,7 @@
 						<li><a href="./modul/fitur.php" target="_blank">Fitur-Fitur</a></li>
                         <li><a href="./modul/about.php" target="_blank">About</a></li>
 					</ul>
-					</li>
+			</li>
                 <!--
 				<li><a href="#">
 					<img src="images/icons/grey/book.png">
@@ -179,7 +179,7 @@
 						</form>
 					</div> -->
 				</li>				
-			</ul>
+		  </ul>
 			<a href="#" class="minimize round_bottom"><span>minimize</span></a>
 		</div>
 				<div id="main" class="grid_13 omega">
