@@ -339,4 +339,6 @@ class Spreadsheet_Excel_Reader {
 	function value($row,$col,$sheet=0) {
 		return $this->val($row,$col,$sheet);
 	}
+	function info($row,$col,$type='',$sheet=0) {
+		$col = $this->getCol($col);
 ?>
