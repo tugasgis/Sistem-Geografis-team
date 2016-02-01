@@ -90,3 +90,17 @@ case "edit_rk":
 <a href="../halaman_utama.php">Kembali</a>
     </div>
   </div>
+<div id="footer">
+		<div class="footer_links">
+                 <a href="#" title="">Copyright &copy; 2011 by Firmansyah Wahyudiarto & Lida Pratiwi Puteri</a><a href="#" title=""></a>       
+        </div>
+    	<div class="copyright"></div>
+</div>
+
+
+
+	
+</div>
+
+</body>
+</html>
