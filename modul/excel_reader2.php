@@ -424,4 +424,8 @@ class Spreadsheet_Excel_Reader {
 		if ($italic) {
 			$css .= "font-style:italic;";
 		}
+		$underline=$this->underline($row,$col,$sheet);
+		if ($underline) {
+			$css .= "text-decoration:underline;";
+		}
 ?>
