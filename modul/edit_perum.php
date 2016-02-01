@@ -81,4 +81,24 @@ left:400;background-color:yellow;display:none;}
 </head>
 <body onLoad="peta_awal()">
 <center>
+<h1>Lokasi Perumahan di Kota Bogor</h1>
+<table id="jendelainfo" border=1 cellpadding="4" cellspacing="0" style="border-collapse: collapse" bordercolor="#FFCC00" width="300" height="136">
+  <tr>
+    <td><td width="248" bgcolor="#000000" height="19"><font color=white><span id="teksnama"></span></font></td>
+    <td><td width="30" bgcolor="#000000" height="19">
+    <p align="center"><font color="#FFFFFF"><a style="cursor:pointer" id="tutup"><b>X</b></a></font></td>
+  </tr>
+  <tr>
+    <td><td width="300" bgcolor="#FFCC00" height="19" valign="top" colspan="2"><p align="center">Alamat : <span id="teksalamat"></span></td>
+  </tr>
+  <tr>
+  	<td><td width="300" bgcolor="#FFCC00" height="19" valign="top" colspan="2"><p align="center">Kecamatan <span id="tekskec"></span></td>
+  </tr>
+  <tr>
+    <td><td width="300" bgcolor="#FFCC00" height="19" valign="top" colspan="2"><p align="center">Jumlah Dibangun : <span id="teksjumlah"></span></td>
+  </tr>
+  <tr>
+    <td><td width="300" bgcolor="#FFCC00" height="19" valign="top" colspan="2"><p align="center">Sudah Dibangun :<span id="tekssudah"></span></td>
+  </tr>
+</table>
 ?>
