@@ -503,4 +503,7 @@ class Spreadsheet_Excel_Reader {
 	function borderLeftColor($row,$col,$sheet=0) {
 		return $this->colors[$this->xfProperty($row,$col,$sheet,'borderLeftColor')];
 	}
+	function borderRightColor($row,$col,$sheet=0) {
+		return $this->colors[$this->xfProperty($row,$col,$sheet,'borderRightColor')];
+	}
 ?>
