@@ -1612,4 +1612,78 @@ if ($richString){
 			);
 
 		}
+		function createNumber($spos) {
+		$rknumhigh = $this->_GetInt4d($this->data, $spos + 10);
+		$rknumlow = $this->_GetInt4d($this->data, $spos + 6);
+		$sign = ($rknumhigh & 0x80000000) >> 31;
+		$exp =  ($rknumhigh & 0x7ff00000) >> 20;
+		$mantissa = (0x100000 | ($rknumhigh & 0x000fffff));
+		$mantissalow1 = ($rknumlow & 0x80000000) >> 31;
+		$mantissalow2 = ($rknumlow & 0x7fffffff);
+		$value = $mantissa / pow( 2 , (20- ($exp - 1023)));
+		if ($mantissalow1 != 0) $value += 1 / pow (2 , (21 - ($exp - 1023)));
+		$value += $mantissalow2 / pow (2 , (52 - ($exp - 1023)));
+		if ($sign) {$value = -1 * $value;}
+		return  $value;
+	}
+
+	function addcell($row, $col, $string, $info=null) {
+		$this->sheets[$this->sn]['maxrow'] = max($this->sheets[$this->sn]['maxrow'], $row + $this->_rowoffset);
+		$this->sheets[$this->sn]['maxcol'] = max($this->sheets[$this->sn]['maxcol'], $col + $this->_coloffset);
+		$this->sheets[$this->sn]['cells'][$row + $this->_rowoffset][$col + $this->_coloffset] = $string;
+		if ($this->store_extended_info && $info) {
+			foreach ($info as $key=>$val) {
+				$this->sheets[$this->sn]['cellsInfo'][$row + $this->_rowoffset][$col + $this->_coloffset][$key] = $val;
+			}
+		}
+	}
+
+
+	function _GetIEEE754($rknum) {
+		if (($rknum & 0x02) != 0) {
+				$value = $rknum >> 2;
+		} else {
+			//mmp
+			// I got my info on IEEE754 encoding from
+			// http://research.microsoft.com/~hollasch/cgindex/coding/ieeefloat.html
+			// The RK format calls for using only the most significant 30 bits of the
+			// 64 bit floating point value. The other 34 bits are assumed to be 0
+			// So, we use the upper 30 bits of $rknum as follows...
+			$sign = ($rknum & 0x80000000) >> 31;
+			$exp = ($rknum & 0x7ff00000) >> 20;
+			$mantissa = (0x100000 | ($rknum & 0x000ffffc));
+			$value = $mantissa / pow( 2 , (20- ($exp - 1023)));
+			if ($sign) {
+				$value = -1 * $value;
+			}
+			//end of changes by mmp
+		}
+		if (($rknum & 0x01) != 0) {
+			$value /= 100;
+		}
+		return $value;
+	}
+
+	function _encodeUTF16($string) {
+		$result = $string;
+		if ($this->_defaultEncoding){
+			switch ($this->_encoderFunction){
+				case 'iconv' :	 $result = iconv('UTF-16LE', $this->_defaultEncoding, $string);
+								break;
+				case 'mb_convert_encoding' :	 $result = mb_convert_encoding($string, $this->_defaultEncoding, 'UTF-16LE' );
+								break;
+			}
+		}
+		return $result;
+	}
+
+	function _GetInt4d($data, $pos) {
+		$value = ord($data[$pos]) | (ord($data[$pos+1]) << 8) | (ord($data[$pos+2]) << 16) | (ord($data[$pos+3]) << 24);
+		if ($value>=4294967294) {
+			$value=-2;
+		}
+		return $value;
+	}
+
+}
 ?>
