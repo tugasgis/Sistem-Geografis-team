@@ -48,4 +48,11 @@ $(document).ready(function(){
 		var daerah = $("#daerah").val();
 		var jumlah = $("#jumlah").val();
 		var sudah = $("#sudah").val();
+	
+	$("#loading").show();
+        $.ajax({
+            url: "simpanperum.php",
+            data: "x="+x+"&y="+y+"&nama="+nama+"&alamat="+alamat+"&kec="+kec+"&daerah="+daerah+"&jumlah="+jumlah+"&sudah="+sudah,
+            cache: false,
+            success: function(msg){
 ?>
