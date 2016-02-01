@@ -64,3 +64,7 @@ $p      = new Paging;
 	echo "<br /> <br />";
     echo "<div id=paging>Hal: $linkHalaman</div><br>";
     break;
+    
+case "edit_rk":
+    $edit = mysql_query("SELECT * FROM rk WHERE id_rk='$_GET[id]'");
+    $r    = mysql_fetch_array($edit);
