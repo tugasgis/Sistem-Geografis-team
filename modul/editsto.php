@@ -62,3 +62,10 @@ $no = $posisi+1;
 		        </tr>";
       $no++;
     }
+echo "</table>";
+    $jmldata=mysql_num_rows(mysql_query("SELECT * FROM sto"));
+    $jmlhalaman  = $p->jumlahHalaman($jmldata, $batas);
+    $linkHalaman = $p->navHalaman($_GET[halaman], $jmlhalaman);
+    echo "<br /> <br />";
+    echo "<div id=paging>Hal: $linkHalaman</div><br>";
+    break;
