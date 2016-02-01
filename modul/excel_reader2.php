@@ -309,4 +309,12 @@ class Spreadsheet_Excel_Reader {
 		if ($d < 16) return "0" . dechex($d);
 		return dechex($d);
 	}
+	
+	function dumpHexData($data, $pos, $length) {
+		$info = "";
+		for ($i = 0; $i <= $length; $i++) {
+			$info .= ($i==0?"":" ") . $this->myHex(ord($data[$pos + $i])) . (ord($data[$pos + $i])>31? "[" . $data[$pos + $i] . "]":'');
+		}
+		return $info;
+	}
 ?>
