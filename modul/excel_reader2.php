@@ -51,4 +51,7 @@
 define('SMALL_BLOCK_DEPOT_BLOCK_POS', 0x3c);
 define('ROOT_START_BLOCK_POS', 0x30);
 define('BIG_BLOCK_SIZE', 0x200);
+define('SMALL_BLOCK_SIZE', 0x40);
+define('EXTENSION_BLOCK_POS', 0x44);
+define('NUM_EXTENSION_BLOCK_POS', 0x48);
 ?>
