@@ -63,3 +63,9 @@ $no = $posisi+1;
                 <td><a href=?jenis=dp&act=edit_dp&id=$r[id_dp]>Edit</a> | 
 	                  <a href=$aksi?jenis=dp&act=hapus&id=$r[id_dp]>Hapus</a>
 		</tr>";
+	$no++;
+    }
+    echo "</table>";
+    $jmldata=mysql_num_rows(mysql_query("SELECT * FROM dp"));
+    $jmlhalaman  = $p->jumlahHalaman($jmldata, $batas);
+    $linkHalaman = $p->navHalaman($_GET[halaman], $jmlhalaman);
