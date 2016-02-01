@@ -644,4 +644,21 @@ class Spreadsheet_Excel_Reader {
 	var $_columnsFormat = array();
 	var $_rowoffset = 1;
 	var $_coloffset = 1;
+	/**
+	 * List of default date formats used by Excel
+	 */
+	var $dateFormats = array (
+		0xe => "m/d/Y",
+		0xf => "M-d-Y",
+		0x10 => "d-M",
+		0x11 => "M-Y",
+		0x12 => "h:i a",
+		0x13 => "h:i:s a",
+		0x14 => "H:i",
+		0x15 => "H:i:s",
+		0x16 => "d/m/Y H:i",
+		0x2d => "i:s",
+		0x2e => "H:i:s",
+		0x2f => "i:s.S"
+	);
 ?>
