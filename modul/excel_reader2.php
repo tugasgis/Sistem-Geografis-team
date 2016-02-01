@@ -539,4 +539,7 @@ class Spreadsheet_Excel_Reader {
 		if ($formatColor!="") {
 			return $formatColor;
 		}
+		$ci = $this->fontProperty($row,$col,$sheet,'color');
+                return $this->rawColor($ci);
+        }
 ?>
