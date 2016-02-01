@@ -15,4 +15,6 @@ while($x = mysql_fetch_array($data)){
     $json .= '"id_sto":"'.$x['id_sto'].'",
     "nama":"'.htmlspecialchars($x['nama_rk']).'",
     "alamat":"'.htmlspecialchars($x['alamat']).'",
+    "idsto":"'.$x['id_sto'].'",
+		"x":"'.$x['lat'].'",
 ?>
