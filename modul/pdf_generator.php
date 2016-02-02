@@ -2,13 +2,13 @@
 include ('class.ezpdf.php');
 $pdf = new Cezpdf();
 
-// Atur margin
+// Atur margin untuk file pdf
 $pdf->ezSetCmMargins(2, 3, 3.3, 3);
 
 // Header dan footer didefinisikan diantara openObject dan closeObject
 $all = $pdf->openObject();
 
-// Teks di tengah atas untuk judul header
+// Teks di tengah atas untuk judul header 
 $pdf->addText(240, 820, 16,'<b>Telkomsel Report</b>');
 $pdf->addText(150, 800, 14,'<b>Mobile Advertising Customer Regional Bandung</b>');
 
