@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>Telkom Consumer Service Division - View Perumahan</title>
+<title>Telkom Consumer Service Division - </title>
 <link rel="stylesheet" type="text/css" href="style.css" />
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 <script type="text/javascript" src="jquery-1.4.3.min.js"></script>
