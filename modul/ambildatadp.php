@@ -1,4 +1,5 @@
 <?php
+//fungsi ini digunakan untuk mengambil data
 include "koneksi.php";
 $akhir = $_GET['akhir'];
 if($akhir==1){
